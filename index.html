@@ -1,0 +1,4234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila de Programação e Sistemas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                    },
+                },
+            },
+            darkMode: 'class',
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-primary text-white p-4 shadow-md">
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-2xl font-bold">Apostila de Programação e Sistemas</h1>
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <input type="text" id="search" placeholder="Buscar..." class="pl-8 pr-4 py-1 rounded-md text-gray-800 text-base">
+                        <i class="fas fa-search text-gray-500 absolute left-2 top-2"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <div class="flex flex-col md:flex-row flex-1">
+            <!-- Sidebar -->
+            <aside class="md:w-64 bg-gray-100 dark:bg-gray-800 p-4 md:h-[calc(100vh-64px)] md:sticky md:top-16 overflow-y-auto">
+                <nav>
+                    <ul id="topicList" class="space-y-2">
+                        <li>
+                            <button data-topic="oop" class="topic-btn w-full text-left p-2 rounded hover:bg-primary hover:text-white transition font-medium">
+                                Programação Orientada a Objetos
+                            </button>
+                        </li>
+                        <li>
+                            <button data-topic="os" class="topic-btn w-full text-left p-2 rounded hover:bg-primary hover:text-white transition font-medium">
+                                Sistemas Operacionais
+                            </button>
+                        </li>
+                        <li>
+                            <button data-topic="testing" class="topic-btn w-full text-left p-2 rounded hover:bg-primary hover:text-white transition font-medium">
+                                Testes Unitários e CMake
+                            </button>
+                        </li>
+                        <li>
+                            <button data-topic="software" class="topic-btn w-full text-left p-2 rounded hover:bg-primary hover:text-white transition font-medium">
+                                Engenharia de Software
+                            </button>
+                        </li>
+                        <li>
+                            <button data-topic="github" class="topic-btn w-full text-left p-2 rounded hover:bg-primary hover:text-white transition font-medium">
+                                Versionamento com GitHub
+                            </button>
+                        </li>
+                        <li>
+                            <button data-topic="bash" class="topic-btn w-full text-left p-2 rounded hover:bg-primary hover:text-white transition font-medium">
+                                Terminal Bash
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content area -->
+            <main class="flex-1 p-6">
+                <div id="contentArea" class="container mx-auto prose prose-lg dark:prose-invert max-w-none">
+                    <h2 class="text-3xl font-bold mb-6">Bem-vindo à Apostila Digital</h2>
+                    <p class="mb-4">Esta apostila contém informações detalhadas sobre os seguintes tópicos:</p>
+                    <ul class="list-disc pl-6 mb-6">
+                        <li>Conceitos de programação orientada a objetos em Python e C++</li>
+                        <li>Configuração e administração de sistemas operacionais (Linux, MacOS e Windows)</li>
+                        <li>Fundamentos de testes unitários e CMake</li>
+                        <li>Princípios de engenharia de software e boas práticas de desenvolvimento</li>
+                        <li>Uso de ferramentas de versionamento com GitHub</li>
+                        <li>Uso do terminal bash</li>
+                    </ul>
+                    <p>Selecione um tópico no menu lateral para começar.</p>
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-gray-200 dark:bg-gray-800 p-4 text-center">
+            <div class="container mx-auto">
+                <p>© 2023 Apostila de Programação e Sistemas</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Content templates -->
+    <template id="oop-content">
+        <h2 class="text-3xl font-bold mb-6">Programação Orientada a Objetos em Python e C++</h2>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Conceitos Fundamentais</h3>
+            <div class="mb-4">
+                <h4 class="text-xl font-medium mb-2">Classes e Objetos</h4>
+                <p>As classes são estruturas que definem propriedades e comportamentos de um tipo específico de objeto. Um objeto é uma instância de uma classe. Classes servem como um modelo para criar objetos.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Python</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>class Pessoa:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+        
+    def apresentar(self):
+        return f"Olá, eu sou {self.nome} e tenho {self.idade} anos."
+
+# Criando um objeto
+pessoa1 = Pessoa("Ana", 30)
+print(pessoa1.apresentar())</code></pre>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">C++</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+class Pessoa {
+private:
+    std::string nome;
+    int idade;
+    
+public:
+    Pessoa(std::string n, int i) : nome(n), idade(i) {}
+    
+    std::string apresentar() {
+        return "Olá, eu sou " + nome + " e tenho " + 
+               std::to_string(idade) + " anos.";
+    }
+};
+
+int main() {
+    Pessoa pessoa1("Ana", 30);
+    std::cout << pessoa1.apresentar() << std::endl;
+    return 0;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <h4 class="text-xl font-medium mb-2">Encapsulamento</h4>
+                <p>Encapsulamento é o conceito de esconder os detalhes internos de uma classe e expor apenas o que é necessário para o uso da classe. Isso geralmente é feito com modificadores de acesso (público, privado, protegido).</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Python</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>class ContaBancaria:
+    def __init__(self, saldo_inicial):
+        self.__saldo = saldo_inicial  # atributo privado
+        
+    def depositar(self, valor):
+        if valor > 0:
+            self.__saldo += valor
+            return True
+        return False
+        
+    def sacar(self, valor):
+        if 0 < valor <= self.__saldo:
+            self.__saldo -= valor
+            return True
+        return False
+        
+    def consultar_saldo(self):
+        return self.__saldo</code></pre>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">C++</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>class ContaBancaria {
+private:
+    double saldo;  // atributo privado
+    
+public:
+    ContaBancaria(double saldoInicial) : saldo(saldoInicial) {}
+    
+    bool depositar(double valor) {
+        if (valor > 0) {
+            saldo += valor;
+            return true;
+        }
+        return false;
+    }
+    
+    bool sacar(double valor) {
+        if (valor > 0 && valor <= saldo) {
+            saldo -= valor;
+            return true;
+        }
+        return false;
+    }
+    
+    double consultarSaldo() const {
+        return saldo;
+    }
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <h4 class="text-xl font-medium mb-2">Herança</h4>
+                <p>Herança permite que uma classe (subclasse ou classe derivada) herde atributos e métodos de outra classe (superclasse ou classe base). Isso promove a reutilização de código e estabelece relações entre classes.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Python</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>class Animal:
+    def __init__(self, nome):
+        self.nome = nome
+        
+    def fazer_som(self):
+        pass
+
+class Cachorro(Animal):
+    def fazer_som(self):
+        return "Au au!"
+        
+class Gato(Animal):
+    def fazer_som(self):
+        return "Miau!"</code></pre>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">C++</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>class Animal {
+protected:
+    std::string nome;
+    
+public:
+    Animal(std::string n) : nome(n) {}
+    
+    virtual std::string fazerSom() const {
+        return "";
+    }
+};
+
+class Cachorro : public Animal {
+public:
+    Cachorro(std::string n) : Animal(n) {}
+    
+    std::string fazerSom() const override {
+        return "Au au!";
+    }
+};
+
+class Gato : public Animal {
+public:
+    Gato(std::string n) : Animal(n) {}
+    
+    std::string fazerSom() const override {
+        return "Miau!";
+    }
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <h4 class="text-xl font-medium mb-2">Polimorfismo</h4>
+                <p>Polimorfismo permite que objetos de diferentes classes sejam tratados como objetos de uma classe comum. Isso é geralmente alcançado por meio de herança e interfaces/classes abstratas.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Python</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>def fazer_animal_falar(animal):
+    return animal.fazer_som()
+
+cachorro = Cachorro("Rex")
+gato = Gato("Mimi")
+
+print(fazer_animal_falar(cachorro))  # "Au au!"
+print(fazer_animal_falar(gato))      # "Miau!"</code></pre>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">C++</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>void fazerAnimalFalar(const Animal& animal) {
+    std::cout << animal.fazerSom() << std::endl;
+}
+
+int main() {
+    Cachorro rex("Rex");
+    Gato mimi("Mimi");
+    
+    fazerAnimalFalar(rex);  // "Au au!"
+    fazerAnimalFalar(mimi); // "Miau!"
+    
+    return 0;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <h4 class="text-xl font-medium mb-2">Abstração</h4>
+                <p>Abstração é o processo de identificar as características essenciais de um objeto e ignorar os detalhes menos importantes. Classes abstratas e interfaces são exemplos de implementação de abstração.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Python</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>from abc import ABC, abstractmethod
+
+class FormaGeometrica(ABC):
+    @abstractmethod
+    def calcular_area(self):
+        pass
+        
+    @abstractmethod
+    def calcular_perimetro(self):
+        pass
+
+class Retangulo(FormaGeometrica):
+    def __init__(self, largura, altura):
+        self.largura = largura
+        self.altura = altura
+        
+    def calcular_area(self):
+        return self.largura * self.altura
+        
+    def calcular_perimetro(self):
+        return 2 * (self.largura + self.altura)</code></pre>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">C++</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>class FormaGeometrica {
+public:
+    virtual double calcularArea() const = 0;
+    virtual double calcularPerimetro() const = 0;
+    virtual ~FormaGeometrica() {}
+};
+
+class Retangulo : public FormaGeometrica {
+private:
+    double largura;
+    double altura;
+    
+public:
+    Retangulo(double l, double a) : largura(l), altura(a) {}
+    
+    double calcularArea() const override {
+        return largura * altura;
+    }
+    
+    double calcularPerimetro() const override {
+        return 2 * (largura + altura);
+    }
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Diferenças entre Python e C++</h3>
+            
+            <table class="min-w-full border-collapse mb-6">
+                <thead>
+                    <tr class="bg-gray-200 dark:bg-gray-700">
+                        <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Característica</th>
+                        <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Python</th>
+                        <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">C++</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Tipagem</td>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Dinâmica</td>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Estática</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Gerenciamento de Memória</td>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Automático (Garbage Collector)</td>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Manual (new/delete) ou RAII</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Privacidade de Atributos</td>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Convenção (_atributo, __atributo)</td>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Explícita (private, protected, public)</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Múltipla Herança</td>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Suportada</td>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Suportada (com mais complexidade)</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Sobrecarga de Operadores</td>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Limitada (métodos especiais como __add__)</td>
+                        <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Extensiva</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Práticas Recomendadas</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="font-bold mb-2">Para Python</h4>
+                    <ul class="list-disc pl-6">
+                        <li>Siga as convenções do PEP 8 para estilo de código</li>
+                        <li>Use tipagem opcional (type hints) para melhorar a clareza</li>
+                        <li>Aproveite os recursos do dataclasses para classes de dados</li>
+                        <li>Utilize docstrings para documentar classes e métodos</li>
+                        <li>Aplique o princípio SOLID nas suas classes e interfaces</li>
+                        <li>Prefira composição sobre herança quando possível</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="font-bold mb-2">Para C++</h4>
+                    <ul class="list-disc pl-6">
+                        <li>Utilize RAII (Resource Acquisition Is Initialization) para gerenciar recursos</li>
+                        <li>Prefira smart pointers (std::unique_ptr, std::shared_ptr) em vez de ponteiros brutos</li>
+                        <li>Aplique move semantics quando apropriado para melhorar o desempenho</li>
+                        <li>Use const-correctness para expressar intenção e permitir otimizações</li>
+                        <li>Siga princípios SOLID na estruturação do código</li>
+                        <li>Evite herança excessiva e prefira composição quando apropriado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="os-content">
+        <h2 class="text-3xl font-bold mb-6">Configuração e Administração de Sistemas Operacionais</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <section class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-semibold mb-4 flex items-center">
+                    <i class="fab fa-linux mr-2"></i> Linux
+                </h3>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Principais Distribuições</h4>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Ubuntu - Fácil de usar, ótima para iniciantes</li>
+                        <li>Debian - Estável e robusto</li>
+                        <li>Fedora - Tecnologias mais recentes</li>
+                        <li>CentOS/RHEL - Para servidores empresariais</li>
+                        <li>Arch Linux - Configurável e minimalista</li>
+                    </ul>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Gerenciamento de Pacotes</h4>
+                    <table class="min-w-full border-collapse mb-4">
+                        <thead>
+                            <tr class="bg-gray-200 dark:bg-gray-700">
+                                <th class="border border-gray-300 dark:border-gray-600 px-2 py-1 text-left">Distribuição</th>
+                                <th class="border border-gray-300 dark:border-gray-600 px-2 py-1 text-left">Gerenciador</th>
+                                <th class="border border-gray-300 dark:border-gray-600 px-2 py-1 text-left">Comandos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-300 dark:border-gray-600 px-2 py-1">Debian/Ubuntu</td>
+                                <td class="border border-gray-300 dark:border-gray-600 px-2 py-1">apt</td>
+                                <td class="border border-gray-300 dark:border-gray-600 px-2 py-1">apt install, apt update</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 dark:border-gray-600 px-2 py-1">Fedora</td>
+                                <td class="border border-gray-300 dark:border-gray-600 px-2 py-1">dnf</td>
+                                <td class="border border-gray-300 dark:border-gray-600 px-2 py-1">dnf install, dnf update</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 dark:border-gray-600 px-2 py-1">Arch</td>
+                                <td class="border border-gray-300 dark:border-gray-600 px-2 py-1">pacman</td>
+                                <td class="border border-gray-300 dark:border-gray-600 px-2 py-1">pacman -S, pacman -Syu</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Gerenciamento de Usuários</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Adicionar usuário
+sudo useradd -m username
+
+# Definir senha
+sudo passwd username
+
+# Adicionar ao grupo
+sudo usermod -aG groupname username
+
+# Listar usuários
+cat /etc/passwd
+
+# Remover usuário
+sudo userdel -r username</code></pre>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Gerenciamento de Serviços (systemd)</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Iniciar serviço
+sudo systemctl start service-name
+
+# Verificar status
+sudo systemctl status service-name
+
+# Habilitar na inicialização
+sudo systemctl enable service-name
+
+# Reiniciar serviço
+sudo systemctl restart service-name
+
+# Parar serviço
+sudo systemctl stop service-name</code></pre>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Permissões de Arquivos</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Mudar permissões (modo octal)
+chmod 755 arquivo
+
+# Mudar permissões (modo simbólico)
+chmod u+x arquivo
+
+# Mudar proprietário
+chown user:group arquivo
+
+# Permissões recursivas para diretório
+chmod -R 755 diretorio</code></pre>
+                </div>
+            </section>
+            
+            <section class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-semibold mb-4 flex items-center">
+                    <i class="fab fa-apple mr-2"></i> macOS
+                </h3>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Gerenciamento de Pacotes</h4>
+                    <p class="mb-4">O macOS não possui um gerenciador de pacotes nativo, mas o Homebrew é amplamente utilizado:</p>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Instalar Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Instalar pacote
+brew install nome-do-pacote
+
+# Atualizar pacotes
+brew update && brew upgrade
+
+# Remover pacote
+brew uninstall nome-do-pacote
+
+# Buscar pacotes
+brew search nome-do-pacote</code></pre>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Gerenciamento de Usuários</h4>
+                    <p class="mb-4">No macOS, o gerenciamento de usuários pode ser feito via GUI (Preferências do Sistema) ou linha de comando:</p>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Criar novo usuário
+sudo dscl . -create /Users/nomedousuario
+
+# Definir shell
+sudo dscl . -create /Users/nomedousuario UserShell /bin/bash
+
+# Definir diretório home
+sudo dscl . -create /Users/nomedousuario NFSHomeDirectory /Users/nomedousuario
+
+# Definir ID de usuário
+sudo dscl . -create /Users/nomedousuario UniqueID 1001
+
+# Definir nome completo
+sudo dscl . -create /Users/nomedousuario RealName "Nome Completo"</code></pre>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Serviços e Daemons</h4>
+                    <p class="mb-4">O macOS usa launchd para gerenciar serviços:</p>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Listar serviços do usuário
+launchctl list
+
+# Carregar serviço
+launchctl load ~/Library/LaunchAgents/com.exemplo.servico.plist
+
+# Descarregar serviço
+launchctl unload ~/Library/LaunchAgents/com.exemplo.servico.plist
+
+# Iniciar serviço
+launchctl start com.exemplo.servico
+
+# Parar serviço
+launchctl stop com.exemplo.servico</code></pre>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Configurações do Sistema</h4>
+                    <p class="mb-4">O macOS usa a ferramenta defaults para gerenciar configurações:</p>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Ler configuração
+defaults read com.apple.finder
+
+# Escrever configuração
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Resetar configuração
+defaults delete com.apple.finder AppleShowAllFiles
+
+# Reiniciar aplicativo para aplicar as mudanças
+killall Finder</code></pre>
+                </div>
+            </section>
+            
+            <section class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-semibold mb-4 flex items-center">
+                    <i class="fab fa-windows mr-2"></i> Windows
+                </h3>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Gerenciamento de Pacotes</h4>
+                    <p class="mb-4">Embora não seja nativo do Windows, o Chocolatey e o Windows Package Manager (winget) são comumente usados:</p>
+                    
+                    <h5 class="font-bold mt-4 mb-2">Chocolatey</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Instalar Chocolatey (cmd admin)
+@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
+
+# Instalar pacote
+choco install nome-do-pacote
+
+# Atualizar pacotes
+choco upgrade all
+
+# Remover pacote
+choco uninstall nome-do-pacote</code></pre>
+                    
+                    <h5 class="font-bold mt-4 mb-2">Winget</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Buscar pacote
+winget search nome-do-pacote
+
+# Instalar pacote
+winget install id-do-pacote
+
+# Atualizar pacotes
+winget upgrade --all</code></pre>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Gerenciamento de Usuários</h4>
+                    <p class="mb-4">Usando PowerShell:</p>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Criar novo usuário local
+New-LocalUser -Name "UserName" -Password (ConvertTo-SecureString "Password" -AsPlainText -Force)
+
+# Adicionar a um grupo
+Add-LocalGroupMember -Group "Administrators" -Member "UserName"
+
+# Listar usuários
+Get-LocalUser
+
+# Remover usuário
+Remove-LocalUser -Name "UserName"</code></pre>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Gerenciamento de Serviços</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Listar serviços
+Get-Service
+
+# Iniciar serviço
+Start-Service -Name "ServiceName"
+
+# Parar serviço
+Stop-Service -Name "ServiceName"
+
+# Configurar inicialização automática
+Set-Service -Name "ServiceName" -StartupType Automatic
+
+# Verificar status
+Get-Service -Name "ServiceName" | Select-Object Status, Name, DisplayName</code></pre>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">PowerShell Remoto</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Habilitar PowerShell Remoto (no host)
+Enable-PSRemoting -Force
+
+# Conectar a sessão remota
+Enter-PSSession -ComputerName PC-NAME -Credential (Get-Credential)
+
+# Executar comando remoto
+Invoke-Command -ComputerName PC-NAME -ScriptBlock { Get-Process } -Credential (Get-Credential)</code></pre>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="text-xl font-medium mb-2">Gerenciamento de Discos</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Listar discos
+Get-Disk
+
+# Listar volumes
+Get-Volume
+
+# Inicializar novo disco
+Initialize-Disk -Number 1 -PartitionStyle GPT
+
+# Criar nova partição e formatar
+New-Partition -DiskNumber 1 -UseMaximumSize | Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisk"</code></pre>
+                </div>
+            </section>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Ferramentas de Administração Multiplataforma</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+                    <h4 class="text-xl font-medium mb-2">Monitoramento e Diagnóstico</h4>
+                    <ul class="list-disc pl-6">
+                        <li><strong>htop/top</strong> - Monitoramento de processos em tempo real (Linux/macOS)</li>
+                        <li><strong>Task Manager/Process Explorer</strong> - Gerenciamento de processos (Windows)</li>
+                        <li><strong>netstat</strong> - Estatísticas de rede (todas as plataformas)</li>
+                        <li><strong>iotop</strong> - Monitoramento de operações de I/O (Linux)</li>
+                        <li><strong>nmon</strong> - Monitoramento de performance (Linux)</li>
+                        <li><strong>Performance Monitor</strong> - Análise de desempenho (Windows)</li>
+                        <li><strong>Activity Monitor</strong> - Monitoramento de sistema (macOS)</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+                    <h4 class="text-xl font-medium mb-2">Backup e Recuperação</h4>
+                    <ul class="list-disc pl-6">
+                        <li><strong>rsync</strong> - Sincronização de arquivos (Linux/macOS)</li>
+                        <li><strong>Time Machine</strong> - Backup automatizado (macOS)</li>
+                        <li><strong>Windows Backup</strong> - Solução nativa de backup (Windows)</li>
+                        <li><strong>restic</strong> - Backup criptografado (multiplataforma)</li>
+                        <li><strong>Borg Backup</strong> - Backup deduplificado (Linux/macOS)</li>
+                        <li><strong>dd</strong> - Criação de imagens de disco (Linux/macOS)</li>
+                        <li><strong>Disk Image</strong> - Criação de imagens (Windows/macOS)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Segurança e Hardening</h3>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+                    <h4 class="text-xl font-medium mb-2">Linux</h4>
+                    <ul class="list-disc pl-6">
+                        <li>Configurar firewall (ufw/iptables)</li>
+                        <li>Manter sistema atualizado (apt/dnf/pacman)</li>
+                        <li>Desativar serviços desnecessários</li>
+                        <li>Configurar SELinux/AppArmor</li>
+                        <li>Implementar autenticação por chave SSH</li>
+                        <li>Auditar logs do sistema (auditd)</li>
+                        <li>Implementar fail2ban para proteção contra força bruta</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+                    <h4 class="text-xl font-medium mb-2">macOS</h4>
+                    <ul class="list-disc pl-6">
+                        <li>Habilitar FileVault (criptografia)</li>
+                        <li>Configurar firewall integrado</li>
+                        <li>Manter sistema e aplicativos atualizados</li>
+                        <li>Utilizar keychain para senhas</li>
+                        <li>Configurar Gatekeeper para aplicativos</li>
+                        <li>Implementar autenticação de dois fatores</li>
+                        <li>Revisar permissões de privacidade</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+                    <h4 class="text-xl font-medium mb-2">Windows</h4>
+                    <ul class="list-disc pl-6">
+                        <li>Habilitar BitLocker (criptografia)</li>
+                        <li>Configurar Windows Defender</li>
+                        <li>Manter sistema e aplicativos atualizados</li>
+                        <li>Configurar Windows Firewall</li>
+                        <li>Implementar políticas de grupo (GPO)</li>
+                        <li>Configurar UAC (Controle de Conta de Usuário)</li>
+                        <li>Utilizar Windows Sandbox para aplicativos não confiáveis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="testing-content">
+        <h2 class="text-3xl font-bold mb-6">Fundamentos de Testes Unitários e CMake</h2>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Testes Unitários</h3>
+            
+            <div class="mb-6">
+                <h4 class="text-xl font-medium mb-2">Conceitos Fundamentais</h4>
+                <p class="mb-4">Testes unitários são uma prática de teste de software em que pequenas partes isoladas de código (unidades) são testadas individualmente para verificar se funcionam corretamente.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Características dos Testes Unitários</h5>
+                        <ul class="list-disc pl-6">
+                            <li>Testam uma única unidade de código (função, método ou classe)</li>
+                            <li>São rápidos de executar</li>
+                            <li>Independentes um do outro</li>
+                            <li>Não dependem de recursos externos (banco de dados, rede, etc.)</li>
+                            <li>Automatizados e repetíveis</li>
+                            <li>Determinísticos (sempre produzem o mesmo resultado)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Benefícios dos Testes Unitários</h5>
+                        <ul class="list-disc pl-6">
+                            <li>Identificam bugs precocemente no ciclo de desenvolvimento</li>
+                            <li>Facilitam mudanças e refatorações no código</li>
+                            <li>Servem como documentação viva do código</li>
+                            <li>Melhoram a qualidade e confiabilidade do software</li>
+                            <li>Reduzem custos de manutenção a longo prazo</li>
+                            <li>Aumentam a confiança durante o desenvolvimento</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="text-xl font-medium mb-2">Estrutura de um Teste Unitário</h4>
+                <p class="mb-4">Os testes unitários geralmente seguem o padrão AAA (Arrange, Act, Assert):</p>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-4">
+                    <ul class="list-none">
+                        <li><strong>Arrange (Preparação):</strong> Configurar os objetos e definir os valores necessários para o teste</li>
+                        <li><strong>Act (Ação):</strong> Invocar o método ou função que está sendo testada</li>
+                        <li><strong>Assert (Verificação):</strong> Verificar se o resultado obtido é o esperado</li>
+                    </ul>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h5 class="font-bold mb-2">Exemplo em Python (com unittest)</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>import unittest
+
+def soma(a, b):
+    return a + b
+
+class TestSoma(unittest.TestCase):
+    def test_soma_positivos(self):
+        # Arrange
+        a, b = 3, 5
+        resultado_esperado = 8
+        
+        # Act
+        resultado = soma(a, b)
+        
+        # Assert
+        self.assertEqual(resultado, resultado_esperado)
+        
+    def test_soma_negativo_positivo(self):
+        # Arrange
+        a, b = -2, 7
+        resultado_esperado = 5
+        
+        # Act
+        resultado = soma(a, b)
+        
+        # Assert
+        self.assertEqual(resultado, resultado_esperado)
+
+if __name__ == '__main__':
+    unittest.main()</code></pre>
+                    </div>
+                    <div>
+                        <h5 class="font-bold mb-2">Exemplo em C++ (com Google Test)</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>#include <gtest/gtest.h>
+
+int soma(int a, int b) {
+    return a + b;
+}
+
+TEST(TestSoma, PositiveNumbers) {
+    // Arrange
+    int a = 3;
+    int b = 5;
+    int expected = 8;
+    
+    // Act
+    int result = soma(a, b);
+    
+    // Assert
+    EXPECT_EQ(result, expected);
+}
+
+TEST(TestSoma, MixedNumbers) {
+    // Arrange
+    int a = -2;
+    int b = 7;
+    int expected = 5;
+    
+    // Act
+    int result = soma(a, b);
+    
+    // Assert
+    EXPECT_EQ(result, expected);
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="text-xl font-medium mb-2">Frameworks de Testes Unitários</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Python</h5>
+                        <ul class="list-disc pl-6">
+                            <li><strong>unittest:</strong> Biblioteca padrão para testes unitários</li>
+                            <li><strong>pytest:</strong> Framework de testes popular, com sintaxe simples e recursos avançados</li>
+                            <li><strong>nose2:</strong> Extensão do unittest com funcionalidades adicionais</li>
+                            <li><strong>doctest:</strong> Testes embutidos na documentação do código</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">C++</h5>
+                        <ul class="list-disc pl-6">
+                            <li><strong>Google Test (gtest):</strong> Framework de testes completo do Google</li>
+                            <li><strong>Catch2:</strong> Framework leve e moderno, baseado apenas em cabeçalhos</li>
+                            <li><strong>Boost.Test:</strong> Parte da biblioteca Boost</li>
+                            <li><strong>CppUnit:</strong> Port do JUnit para C++</li>
+                            <li><strong>Doctest:</strong> Framework leve com foco em velocidade</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="text-xl font-medium mb-2">Mocks e Stubs</h4>
+                <p class="mb-4">Objetos simulados usados para isolar a unidade de teste de suas dependências externas:</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Python (com unittest.mock)</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>from unittest import TestCase
+from unittest.mock import patch, MagicMock
+
+class Usuario:
+    def __init__(self, db):
+        self.db = db
+        
+    def get_nome_completo(self, user_id):
+        user_data = self.db.get_user(user_id)
+        if user_data:
+            return f"{user_data['nome']} {user_data['sobrenome']}"
+        return None
+
+class TestUsuario(TestCase):
+    def test_get_nome_completo(self):
+        # Criar um mock para o db
+        mock_db = MagicMock()
+        
+        # Configurar o comportamento do mock
+        mock_db.get_user.return_value = {
+            'nome': 'João',
+            'sobrenome': 'Silva'
+        }
+        
+        # Injetar o mock
+        usuario = Usuario(mock_db)
+        
+        # Testar o método
+        resultado = usuario.get_nome_completo(1)
+        
+        # Verificar resultado
+        self.assertEqual(resultado, 'João Silva')
+        
+        # Verificar se o mock foi chamado corretamente
+        mock_db.get_user.assert_called_once_with(1)</code></pre>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">C++ (com Google Mock)</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>#include <gmock/gmock.h>
+#include <gtest/gtest.h>
+#include <string>
+
+class IDatabase {
+public:
+    virtual ~IDatabase() {}
+    virtual std::string GetUserName(int id) = 0;
+};
+
+class MockDatabase : public IDatabase {
+public:
+    MOCK_METHOD(std::string, GetUserName, (int id), (override));
+};
+
+class User {
+private:
+    IDatabase* db;
+public:
+    User(IDatabase* database) : db(database) {}
+    
+    std::string GetUserName(int id) {
+        return db->GetUserName(id);
+    }
+};
+
+TEST(UserTest, GetUserName) {
+    // Create mock
+    MockDatabase mock_db;
+    
+    // Set expectations
+    EXPECT_CALL(mock_db, GetUserName(1))
+        .WillOnce(::testing::Return("João Silva"));
+    
+    // Inject mock and test
+    User user(&mock_db);
+    EXPECT_EQ(user.GetUserName(1), "João Silva");
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="text-xl font-medium mb-2">Cobertura de Testes</h4>
+                <p class="mb-4">A cobertura de testes é uma métrica que indica quanto do código fonte está sendo testado:</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Tipos de Cobertura</h5>
+                        <ul class="list-disc pl-6">
+                            <li><strong>Cobertura de linhas:</strong> Quantas linhas de código são executadas</li>
+                            <li><strong>Cobertura de ramos:</strong> Quantos caminhos de decisão são testados</li>
+                            <li><strong>Cobertura de funções:</strong> Quantas funções/métodos são chamados</li>
+                            <li><strong>Cobertura de statements:</strong> Quantas instruções são executadas</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Ferramentas de Cobertura</h5>
+                        <ul class="list-disc pl-6">
+                            <li><strong>Python:</strong> coverage.py, pytest-cov</li>
+                            <li><strong>C++:</strong> gcov, lcov, OpenCppCoverage</li>
+                            <li><strong>Integração CI/CD:</strong> Codecov, Coveralls, SonarQube</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">CMake</h3>
+            
+            <div class="mb-6">
+                <h4 class="text-xl font-medium mb-2">O que é CMake?</h4>
+                <p class="mb-4">CMake é uma ferramenta de build system generator, multiplataforma e de código aberto, projetada para construir, testar e empacotar software. Em vez de construir diretamente o software, o CMake gera arquivos de compilação nativos (como Makefiles, projetos Visual Studio, etc.) que são então usados para compilar o código.</p>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="text-xl font-medium mb-2">Estrutura Básica de um Projeto CMake</h4>
+                <p class="mb-4">Um projeto típico usando CMake inclui pelo menos um arquivo CMakeLists.txt na raiz do projeto:</p>
+                
+                <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code>cmake_minimum_required(VERSION 3.10)
+project(MeuProjeto VERSION 1.0)
+
+# Definir padrão C++
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Adicionar diretório de cabeçalhos
+include_directories(include)
+
+# Adicionar biblioteca
+add_library(minha_lib src/minha_lib.cpp)
+
+# Adicionar executável
+add_executable(meu_app src/main.cpp)
+target_link_libraries(meu_app minha_lib)
+
+# Configurar testes
+enable_testing()
+add_subdirectory(tests)</code></pre>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-4">
+                    <h5 class="font-bold mb-2">Estrutura de Diretórios Típica</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>meu_projeto/
+├── CMakeLists.txt           # Arquivo principal do CMake
+├── include/                 # Arquivos de cabeçalho (.h, .hpp)
+│   └── minha_lib.h
+├── src/                     # Arquivos de código-fonte (.cpp, .c)
+│   ├── main.cpp
+│   └── minha_lib.cpp
+├── tests/                   # Testes unitários
+│   ├── CMakeLists.txt       # CMake específico para testes
+│   └── test_minha_lib.cpp
+└── build/                   # Diretório de build (gerado)</code></pre>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="text-xl font-medium mb-2">Comandos Básicos do CMake</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Comandos de Configuração</h5>
+                        <ul class="list-disc pl-6">
+                            <li><code>cmake_minimum_required(VERSION x.y)</code>: Define a versão mínima do CMake</li>
+                            <li><code>project(Nome VERSION x.y)</code>: Define o nome e versão do projeto</li>
+                            <li><code>set(VAR valor)</code>: Define uma variável</li>
+                            <li><code>option(VAR "descrição" ON/OFF)</code>: Define uma opção booleana</li>
+                            <li><code>include_directories(dir)</code>: Adiciona diretórios de inclusão</li>
+                            <li><code>add_definitions(-DMACRO)</code>: Adiciona definições de macro</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Comandos de Build</h5>
+                        <ul class="list-disc pl-6">
+                            <li><code>add_executable(nome fonte1 [fonte2...])</code>: Cria um executável</li>
+                            <li><code>add_library(nome STATIC/SHARED fonte1 [fonte2...])</code>: Cria uma biblioteca</li>
+                            <li><code>target_link_libraries(alvo dep1 [dep2...])</code>: Vincula bibliotecas</li>
+                            <li><code>target_include_directories(alvo dir1 [dir2...])</code>: Inclui diretórios para um alvo específico</li>
+                            <li><code>add_subdirectory(dir)</code>: Adiciona um subdiretório ao build</li>
+                            <li><code>target_compile_features(alvo PRIVATE/PUBLIC/INTERFACE feature)</code>: Define features de compilação</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-4">
+                    <h5 class="font-bold mb-2">Comandos de Teste</h5>
+                    <ul class="list-disc pl-6">
+                        <li><code>enable_testing()</code>: Habilita o suporte a testes</li>
+                        <li><code>add_test(NAME teste COMMAND comando)</code>: Adiciona um teste</li>
+                        <li><code>set_tests_properties(teste PROPERTIES propriedade valor)</code>: Define propriedades do teste</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="text-xl font-medium mb-2">Integrando Google Test com CMake</h4>
+                
+                <p class="mb-4">Exemplo de CMakeLists.txt na pasta tests/ para integrar Google Test:</p>
+                
+                <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># CMakeLists.txt para testes
+
+# Baixar e configurar o GoogleTest
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG release-1.12.1
+)
+FetchContent_MakeAvailable(googletest)
+
+# Adicionar executável de teste
+add_executable(
+  testes
+  test_minha_lib.cpp
+)
+
+# Vincular bibliotecas necessárias
+target_link_libraries(
+  testes
+  PRIVATE
+  gtest_main
+  minha_lib
+)
+
+# Incluir headers da biblioteca
+target_include_directories(
+  testes
+  PRIVATE
+  ${PROJECT_SOURCE_DIR}/include
+)
+
+# Registrar o teste
+include(GoogleTest)
+gtest_discover_tests(testes)</code></pre>
+                
+                <p class="mb-4">Exemplo de arquivo de teste usando Google Test:</p>
+                
+                <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code>#include <gtest/gtest.h>
+#include "minha_lib.h"
+
+TEST(MinhaLib, TesteFuncao1) {
+    // Arrange
+    int entrada = 5;
+    int esperado = 10;
+    
+    // Act
+    int resultado = dobro(entrada);
+    
+    // Assert
+    EXPECT_EQ(resultado, esperado);
+}
+
+TEST(MinhaLib, TesteFuncao2) {
+    // Arrange
+    std::string entrada = "abc";
+    std::string esperado = "ABC";
+    
+    // Act
+    std::string resultado = paraMinusculo(entrada);
+    
+    // Assert
+    EXPECT_EQ(resultado, esperado);
+}</code></pre>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="text-xl font-medium mb-2">Fluxo de Trabalho com CMake</h4>
+                
+                <p class="mb-4">Processo típico para construir um projeto usando CMake:</p>
+                
+                <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># 1. Criar e entrar no diretório de build
+mkdir -p build && cd build
+
+# 2. Configurar o projeto (gerar Makefiles)
+cmake ..
+
+# 3. Compilar o projeto
+cmake --build .
+
+# 4. Executar os testes
+ctest
+
+# 5. Instalar (opcional)
+cmake --install .</code></pre>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-4">
+                    <h5 class="font-bold mb-2">Tipos de Build</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code># Build de debug (mais informações para depuração)
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+
+# Build de release (otimizada para desempenho)
+cmake -DCMAKE_BUILD_TYPE=Release ..
+
+# Especificar compilador
+cmake -DCMAKE_CXX_COMPILER=g++-11 ..</code></pre>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="text-xl font-medium mb-2">CMake em Projetos Reais</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Práticas Recomendadas</h5>
+                        <ul class="list-disc pl-6">
+                            <li>Use target_* commands em vez de global_* commands</li>
+                            <li>Prefira PRIVATE, PUBLIC, INTERFACE para controlar propagação de propriedades</li>
+                            <li>Organize o projeto em bibliotecas menores e reutilizáveis</li>
+                            <li>Use find_package para dependências externas</li>
+                            <li>Defina variáveis de cache para opções configuráveis</li>
+                            <li>Use generator expressions para lógica condicional avançada</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                        <h5 class="font-bold mb-2">Recursos Avançados</h5>
+                        <ul class="list-disc pl-6">
+                            <li>Módulos personalizados (CMAKE_MODULE_PATH)</li>
+                            <li>Geração de arquivos de configuração</li>
+                            <li>Empacotamento com CPack</li>
+                            <li>Criação de instaladores</li>
+                            <li>Integração com ferramentas de análise (clang-tidy, cppcheck)</li>
+                            <li>Suporte a compilação cruzada</li>
+                            <li>Integração com IDEs (Visual Studio, CLion, etc.)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Integração de Testes Unitários com CMake</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Para C++</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code># 1. Habilitar testes no projeto principal
+enable_testing()
+
+# 2. Incluir o diretório de testes
+add_subdirectory(tests)
+
+# 3. No diretório de testes (tests/CMakeLists.txt):
+add_executable(testes_unitarios test1.cpp test2.cpp)
+target_link_libraries(testes_unitarios PRIVATE 
+                      minha_lib
+                      gtest_main)
+
+# 4. Adicionar testes ao CTest
+add_test(NAME testes_unitarios COMMAND testes_unitarios)
+
+# 5. Executar testes
+# (no diretório build)
+ctest -V</code></pre>
+                </div>
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Para Python</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code># Exemplo de CMakeLists.txt para testes Python
+find_package(Python COMPONENTS Interpreter REQUIRED)
+
+# Adicionar teste com pytest
+add_test(
+  NAME python_tests
+  COMMAND ${Python_EXECUTABLE} -m pytest ${CMAKE_CURRENT_SOURCE_DIR}/tests
+)
+
+# Definir variáveis de ambiente para o teste
+set_tests_properties(python_tests PROPERTIES
+  ENVIRONMENT "PYTHONPATH=${CMAKE_SOURCE_DIR}/src"
+)
+
+# Outra opção: usar um script Python diretamente
+add_test(
+  NAME test_script
+  COMMAND ${Python_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_tests.py
+)</code></pre>
+                </div>
+            </div>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-4">
+                <h4 class="text-xl font-medium mb-2">Integração com CI/CD</h4>
+                <p class="mb-4">Exemplo de configuração para GitHub Actions:</p>
+                <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>name: CMake CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Configurar CMake
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=Debug
+
+    - name: Compilar
+      run: cmake --build ${{github.workspace}}/build
+
+    - name: Executar testes
+      working-directory: ${{github.workspace}}/build
+      run: ctest -C Debug -V
+</code></pre>
+            </div>
+        </div>
+    </template>
+
+    <template id="software-content">
+        <h2 class="text-3xl font-bold mb-6">Princípios de Engenharia de Software e Boas Práticas</h2>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Princípios SOLID</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="font-bold mb-2">S</h4>
+                    <p class="text-sm"><strong>Single Responsibility Principle</strong></p>
+                    <p class="text-sm">Uma classe deve ter apenas uma razão para mudar, ou seja, deve ter apenas uma responsabilidade.</p>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="font-bold mb-2">O</h4>
+                    <p class="text-sm"><strong>Open/Closed Principle</strong></p>
+                    <p class="text-sm">Entidades de software devem estar abertas para extensão, mas fechadas para modificação.</p>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="font-bold mb-2">L</h4>
+                    <p class="text-sm"><strong>Liskov Substitution Principle</strong></p>
+                    <p class="text-sm">Subtipos devem ser substituíveis por seus tipos base sem alterar a corretude do programa.</p>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="font-bold mb-2">I</h4>
+                    <p class="text-sm"><strong>Interface Segregation Principle</strong></p>
+                    <p class="text-sm">Clientes não devem ser forçados a depender de interfaces que não utilizam.</p>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="font-bold mb-2">D</h4>
+                    <p class="text-sm"><strong>Dependency Inversion Principle</strong></p>
+                    <p class="text-sm">Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações.</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Exemplo do SRP em Python</h4>
+                    <div class="mb-4">
+                        <h5 class="font-bold mb-2">❌ Violando o SRP</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>class Usuario:
+    def __init__(self, nome, email):
+        self.nome = nome
+        self.email = email
+        
+    def salvar_no_banco(self):
+        # Lógica para salvar no banco de dados
+        print(f"Salvando usuário {self.nome} no banco")
+        
+    def enviar_email_boas_vindas(self):
+        # Lógica para enviar email
+        print(f"Enviando email para {self.email}")
+        
+    def validar_email(self):
+        # Lógica para validar o email
+        return '@' in self.email</code></pre>
+                    </div>
+                    <div>
+                        <h5 class="font-bold mb-2">✅ Aplicando o SRP</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>class Usuario:
+    def __init__(self, nome, email):
+        self.nome = nome
+        self.email = email
+
+class UsuarioRepository:
+    def salvar(self, usuario):
+        # Lógica para salvar no banco de dados
+        print(f"Salvando usuário {usuario.nome} no banco")
+        
+class EmailService:
+    def enviar_boas_vindas(self, usuario):
+        # Lógica para enviar email
+        print(f"Enviando email para {usuario.email}")
+        
+class EmailValidator:
+    def validar(self, email):
+        # Lógica para validar o email
+        return '@' in email</code></pre>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Exemplo do OCP em C++</h4>
+                    <div class="mb-4">
+                        <h5 class="font-bold mb-2">❌ Violando o OCP</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>class Calculadora {
+public:
+    double calcular(double a, double b, string operacao) {
+        if (operacao == "soma") {
+            return a + b;
+        } else if (operacao == "subtracao") {
+            return a - b;
+        } else if (operacao == "multiplicacao") {
+            return a * b;
+        } else if (operacao == "divisao") {
+            return a / b;
+        }
+        // Para adicionar uma nova operação, precisamos modificar esta classe
+        return 0;
+    }
+};</code></pre>
+                    </div>
+                    <div>
+                        <h5 class="font-bold mb-2">✅ Aplicando o OCP</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>class Operacao {
+public:
+    virtual double executar(double a, double b) = 0;
+    virtual ~Operacao() {}
+};
+
+class Soma : public Operacao {
+public:
+    double executar(double a, double b) override {
+        return a + b;
+    }
+};
+
+class Subtracao : public Operacao {
+public:
+    double executar(double a, double b) override {
+        return a - b;
+    }
+};
+
+// Novas operações podem ser adicionadas sem modificar o código existente
+class Multiplicacao : public Operacao {
+public:
+    double executar(double a, double b) override {
+        return a * b;
+    }
+};
+
+class Calculadora {
+private:
+    Operacao* operacao;
+public:
+    Calculadora(Operacao* op) : operacao(op) {}
+    
+    double calcular(double a, double b) {
+        return operacao->executar(a, b);
+    }
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Padrões de Projeto</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Padrões Criacionais</h4>
+                    <ul class="list-disc pl-6">
+                        <li><strong>Singleton:</strong> Garante que uma classe tenha apenas uma instância</li>
+                        <li><strong>Factory Method:</strong> Define uma interface para criar objetos, mas permite que subclasses decidam quais classes instanciar</li>
+                        <li><strong>Abstract Factory:</strong> Fornece uma interface para criar famílias de objetos relacionados sem especificar suas classes concretas</li>
+                        <li><strong>Builder:</strong> Separa a construção de um objeto complexo da sua representação</li>
+                        <li><strong>Prototype:</strong> Cria novos objetos clonando um objeto existente</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Padrões Estruturais</h4>
+                    <ul class="list-disc pl-6">
+                        <li><strong>Adapter:</strong> Permite que interfaces incompatíveis trabalhem juntas</li>
+                        <li><strong>Bridge:</strong> Separa uma abstração da sua implementação</li>
+                        <li><strong>Composite:</strong> Compõe objetos em estruturas de árvore para representar hierarquias parte-todo</li>
+                        <li><strong>Decorator:</strong> Adiciona responsabilidades a objetos dinamicamente</li>
+                        <li><strong>Facade:</strong> Fornece uma interface simplificada para um subsistema complexo</li>
+                        <li><strong>Proxy:</strong> Fornece um substituto para controlar o acesso a outro objeto</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Padrões Comportamentais</h4>
+                    <ul class="list-disc pl-6">
+                        <li><strong>Observer:</strong> Define uma dependência um-para-muitos entre objetos</li>
+                        <li><strong>Strategy:</strong> Define uma família de algoritmos, encapsula cada um, e torna-os intercambiáveis</li>
+                        <li><strong>Command:</strong> Encapsula uma solicitação como um objeto</li>
+                        <li><strong>Template Method:</strong> Define o esqueleto de um algoritmo, delegando etapas às subclasses</li>
+                        <li><strong>Iterator:</strong> Fornece uma maneira de acessar elementos de um objeto agregado sequencialmente</li>
+                        <li><strong>State:</strong> Permite que um objeto altere seu comportamento quando seu estado interno muda</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Exemplo de Strategy em Python</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>from abc import ABC, abstractmethod
+
+# Interface Strategy
+class EstrategiaOrdenacao(ABC):
+    @abstractmethod
+    def ordenar(self, dados):
+        pass
+
+# Implementações concretas
+class OrdenacaoBubbleSort(EstrategiaOrdenacao):
+    def ordenar(self, dados):
+        print("Ordenando com Bubble Sort")
+        # Implementação do bubble sort
+        return sorted(dados)
+
+class OrdenacaoQuickSort(EstrategiaOrdenacao):
+    def ordenar(self, dados):
+        print("Ordenando com Quick Sort")
+        # Implementação do quick sort
+        return sorted(dados)
+
+class OrdenacaoMergeSort(EstrategiaOrdenacao):
+    def ordenar(self, dados):
+        print("Ordenando com Merge Sort")
+        # Implementação do merge sort
+        return sorted(dados)
+
+# Contexto
+class Ordenador:
+    def __init__(self, estrategia: EstrategiaOrdenacao):
+        self._estrategia = estrategia
+        
+    def definir_estrategia(self, estrategia: EstrategiaOrdenacao):
+        self._estrategia = estrategia
+        
+    def ordenar(self, dados):
+        return self._estrategia.ordenar(dados)
+
+# Uso
+dados = [3, 1, 4, 1, 5, 9, 2, 6, 5]
+
+# Inicialmente usa BubbleSort
+ordenador = Ordenador(OrdenacaoBubbleSort())
+ordenador.ordenar(dados)
+
+# Muda para QuickSort
+ordenador.definir_estrategia(OrdenacaoQuickSort())
+ordenador.ordenar(dados)</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Exemplo de Observer em C++</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+
+// Observer Interface
+class Observer {
+public:
+    virtual ~Observer() {}
+    virtual void update(const std::string& message) = 0;
+};
+
+// Subject (Observable)
+class Subject {
+private:
+    std::vector<Observer*> observers;
+    
+public:
+    void addObserver(Observer* observer) {
+        observers.push_back(observer);
+    }
+    
+    void removeObserver(Observer* observer) {
+        observers.erase(
+            std::remove(observers.begin(), observers.end(), observer),
+            observers.end()
+        );
+    }
+    
+    void notify(const std::string& message) {
+        for (Observer* observer : observers) {
+            observer->update(message);
+        }
+    }
+};
+
+// Concrete Subject
+class WeatherStation : public Subject {
+private:
+    int temperature;
+    
+public:
+    WeatherStation() : temperature(0) {}
+    
+    void setTemperature(int temp) {
+        temperature = temp;
+        notify("Temperature changed to " + std::to_string(temperature));
+    }
+};
+
+// Concrete Observer
+class Display : public Observer {
+private:
+    std::string name;
+    
+public:
+    Display(const std::string& n) : name(n) {}
+    
+    void update(const std::string& message) override {
+        std::cout << name << " received: " << message << std::endl;
+    }
+};
+
+// Client code
+int main() {
+    WeatherStation station;
+    
+    Display phoneDisplay("Phone Display");
+    Display tabletDisplay("Tablet Display");
+    
+    station.addObserver(&phoneDisplay);
+    station.addObserver(&tabletDisplay);
+    
+    station.setTemperature(25);  // Both displays will be notified
+    
+    station.removeObserver(&tabletDisplay);
+    
+    station.setTemperature(30);  // Only phone display will be notified
+    
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Clean Code</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Princípios</h4>
+                    <ul class="list-disc pl-6">
+                        <li><strong>Nomes significativos:</strong> Use nomes que revelem intenção</li>
+                        <li><strong>Funções pequenas:</strong> Cada função deve fazer apenas uma coisa</li>
+                        <li><strong>Comentários:</strong> Evite comentários explicando o "o quê"; prefira código auto-explicativo</li>
+                        <li><strong>Formatação:</strong> Código deve ser formatado de maneira consistente</li>
+                        <li><strong>Tratamento de erros:</strong> Separe a lógica de tratamento de erros da lógica de negócio</li>
+                        <li><strong>Classes:</strong> Devem ser pequenas e com um propósito único</li>
+                        <li><strong>Testes:</strong> Código de teste também deve ser limpo</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Regras Práticas</h4>
+                    <ol class="list-decimal pl-6">
+                        <li>Siga convenções de nomenclatura da linguagem</li>
+                        <li>Mantenha funções com menos de 20 linhas</li>
+                        <li>Limite parâmetros de função (idealmente menos de 3)</li>
+                        <li>Evite números mágicos e strings mágicas</li>
+                        <li>Uma função = um nível de abstração</li>
+                        <li>Elimine duplicações (DRY - Don't Repeat Yourself)</li>
+                        <li>Prefira exceções a códigos de erro</li>
+                        <li>Use enums em vez de constantes numéricas</li>
+                        <li>Evite condições negativas</li>
+                        <li>Aplique formatação consistente no projeto</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Exemplo de Clean Code em Python</h4>
+                    <div class="mb-4">
+                        <h5 class="font-bold mb-2">❌ Código Ruim</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>def p(d, t):
+    # Calcular pagamento
+    r = 0
+    for i in range(len(d)):
+        if d[i]["t"] == "r":
+            r += d[i]["v"]
+        elif d[i]["t"] == "d":
+            if t:
+                r -= d[i]["v"] * 0.9
+            else:
+                r -= d[i]["v"]
+    return r</code></pre>
+                    </div>
+                    <div>
+                        <h5 class="font-bold mb-2">✅ Código Limpo</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>DESCONTO_PREMIUM = 0.9
+
+def calcular_saldo_final(transacoes, cliente_premium):
+    """
+    Calcula o saldo final com base nas transações e status do cliente.
+    
+    Args:
+        transacoes: Lista de dicionários com transações
+        cliente_premium: Booleano indicando se o cliente é premium
+        
+    Returns:
+        float: Saldo final após todas as transações
+    """
+    saldo = 0
+    
+    for transacao in transacoes:
+        if transacao["tipo"] == "receita":
+            saldo += transacao["valor"]
+        elif transacao["tipo"] == "despesa":
+            saldo -= aplicar_desconto_se_premium(
+                transacao["valor"], 
+                cliente_premium
+            )
+            
+    return saldo
+
+def aplicar_desconto_se_premium(valor, cliente_premium):
+    """Aplica desconto se o cliente for premium."""
+    if cliente_premium:
+        return valor * DESCONTO_PREMIUM
+    return valor</code></pre>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Exemplo de Clean Code em C++</h4>
+                    <div class="mb-4">
+                        <h5 class="font-bold mb-2">❌ Código Ruim</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>void process(vector<Employee*>& e, int type) {
+    double result = 0.0;
+    for (int i = 0; i < e.size(); i++) {
+        if (type == 0) {  // Calculate total salary
+            result += e[i]->s;
+        } else if (type == 1) {  // Count employees
+            result += 1;
+        } else if (type == 2) {  // Average age
+            result += e[i]->a;
+        }
+    }
+    
+    if (type == 0 || type == 2) {
+        if (type == 2 && e.size() > 0) {
+            result /= e.size();
+        }
+        cout << "Result: " << result << endl;
+    } else {
+        cout << "Count: " << result << endl;
+    }
+}</code></pre>
+                    </div>
+                    <div>
+                        <h5 class="font-bold mb-2">✅ Código Limpo</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>enum class ReportType {
+    TOTAL_SALARY,
+    EMPLOYEE_COUNT,
+    AVERAGE_AGE
+};
+
+struct Employee {
+    std::string name;
+    double salary;
+    int age;
+};
+
+double calculateTotalSalary(const std::vector<Employee*>& employees) {
+    double total = 0.0;
+    for (const auto& employee : employees) {
+        total += employee->salary;
+    }
+    return total;
+}
+
+int countEmployees(const std::vector<Employee*>& employees) {
+    return employees.size();
+}
+
+double calculateAverageAge(const std::vector<Employee*>& employees) {
+    if (employees.empty()) {
+        return 0.0;
+    }
+    
+    double totalAge = 0.0;
+    for (const auto& employee : employees) {
+        totalAge += employee->age;
+    }
+    return totalAge / employees.size();
+}
+
+void printReport(const std::vector<Employee*>& employees, 
+                 ReportType reportType) {
+    switch (reportType) {
+        case ReportType::TOTAL_SALARY:
+            std::cout << "Total Salary: " 
+                      << calculateTotalSalary(employees) << std::endl;
+            break;
+            
+        case ReportType::EMPLOYEE_COUNT:
+            std::cout << "Employee Count: " 
+                      << countEmployees(employees) << std::endl;
+            break;
+            
+        case ReportType::AVERAGE_AGE:
+            std::cout << "Average Age: " 
+                      << calculateAverageAge(employees) << std::endl;
+            break;
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Ciclo de Desenvolvimento de Software</h3>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg mb-6">
+                <h4 class="text-xl font-medium mb-4">Metodologias Ágeis vs. Tradicionais</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h5 class="font-bold mb-2">Metodologias Ágeis</h5>
+                        <ul class="list-disc pl-6">
+                            <li>Ciclos de desenvolvimento curtos (sprints)</li>
+                            <li>Feedback contínuo e adaptação</li>
+                            <li>Entregas frequentes de software funcional</li>
+                            <li>Colaboração próxima com o cliente</li>
+                            <li>Resposta rápida a mudanças</li>
+                            <li>Exemplos: Scrum, Kanban, XP</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h5 class="font-bold mb-2">Metodologias Tradicionais</h5>
+                        <ul class="list-disc pl-6">
+                            <li>Processo sequencial (cascata)</li>
+                            <li>Documentação extensa</li>
+                            <li>Planejamento detalhado antecipado</li>
+                            <li>Fases distintas e separadas</li>
+                            <li>Menos flexível a mudanças</li>
+                            <li>Exemplos: Waterfall, RUP</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Scrum</h4>
+                    <p class="mb-4">Framework ágil para gerenciar trabalho complexo em equipes.</p>
+                    
+                    <h5 class="font-bold mb-2">Elementos-chave:</h5>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li><strong>Papéis:</strong> Product Owner, Scrum Master, Time de Desenvolvimento</li>
+                        <li><strong>Artefatos:</strong> Product Backlog, Sprint Backlog, Incremento</li>
+                        <li><strong>Eventos:</strong> Sprint, Planejamento, Daily Scrum, Revisão, Retrospectiva</li>
+                    </ul>
+                    
+                    <h5 class="font-bold mb-2">Fluxo básico:</h5>
+                    <ol class="list-decimal pl-6">
+                        <li>Priorização do Product Backlog</li>
+                        <li>Planejamento da Sprint</li>
+                        <li>Reuniões diárias</li>
+                        <li>Desenvolvimento durante a Sprint (1-4 semanas)</li>
+                        <li>Revisão e demonstração</li>
+                        <li>Retrospectiva e melhoria contínua</li>
+                    </ol>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">DevOps</h4>
+                    <p class="mb-4">Conjunto de práticas que combinam desenvolvimento de software (Dev) e operações de TI (Ops).</p>
+                    
+                    <h5 class="font-bold mb-2">Princípios:</h5>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Automação de processos</li>
+                        <li>Integração e Entrega Contínuas (CI/CD)</li>
+                        <li>Monitoramento e feedback</li>
+                        <li>Colaboração entre times</li>
+                        <li>Infraestrutura como código</li>
+                    </ul>
+                    
+                    <h5 class="font-bold mb-2">Práticas comuns:</h5>
+                    <ul class="list-disc pl-6">
+                        <li>Integração Contínua</li>
+                        <li>Entrega Contínua</li>
+                        <li>Implantação Contínua</li>
+                        <li>Monitoramento e logging</li>
+                        <li>Testes automatizados</li>
+                        <li>Gerenciamento de configuração</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Extreme Programming (XP)</h4>
+                    <p class="mb-4">Metodologia ágil focada em práticas de programação de alta qualidade.</p>
+                    
+                    <h5 class="font-bold mb-2">Valores:</h5>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Comunicação</li>
+                        <li>Simplicidade</li>
+                        <li>Feedback</li>
+                        <li>Coragem</li>
+                        <li>Respeito</li>
+                    </ul>
+                    
+                    <h5 class="font-bold mb-2">Práticas:</h5>
+                    <ul class="list-disc pl-6">
+                        <li>Programação em pares</li>
+                        <li>Desenvolvimento orientado a testes (TDD)</li>
+                        <li>Integração contínua</li>
+                        <li>Design simples</li>
+                        <li>Refatoração constante</li>
+                        <li>Pequenas releases</li>
+                        <li>Cliente presente</li>
+                        <li>Propriedade coletiva do código</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Métricas de Qualidade de Software</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Métricas de Código</h4>
+                    <ul class="list-disc pl-6">
+                        <li><strong>Complexidade Ciclomática:</strong> Mede o número de caminhos independentes através do código</li>
+                        <li><strong>Acoplamento:</strong> Grau de interdependência entre módulos</li>
+                        <li><strong>Coesão:</strong> Grau em que os elementos de um módulo pertencem juntos</li>
+                        <li><strong>Profundidade de Herança:</strong> Níveis da hierarquia de herança</li>
+                        <li><strong>Linhas de Código (LOC):</strong> Tamanho do código</li>
+                        <li><strong>Débito Técnico:</strong> Custo de refatoração devido a atalhos tomados</li>
+                        <li><strong>Duplicação de Código:</strong> Percentual de código duplicado</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Métricas de Processo</h4>
+                    <ul class="list-disc pl-6">
+                        <li><strong>Cobertura de Testes:</strong> Percentual do código exercitado pelos testes</li>
+                        <li><strong>Velocidade:</strong> Taxa de entrega de funcionalidades</li>
+                        <li><strong>Defeitos por Linha de Código:</strong> Bugs por KLOC</li>
+                        <li><strong>Tempo Médio entre Falhas (MTBF):</strong> Estabilidade do sistema</li>
+                        <li><strong>Tempo Médio para Reparo (MTTR):</strong> Rapidez na correção de bugs</li>
+                        <li><strong>Lead Time:</strong> Tempo entre concepção e entrega</li>
+                        <li><strong>Cycle Time:</strong> Tempo entre início da implementação e entrega</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-6">
+                <h4 class="text-xl font-medium mb-2">Ferramentas de Análise Estática</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h5 class="font-bold mb-2">Python</h5>
+                        <ul class="list-disc pl-6">
+                            <li><strong>pylint:</strong> Verificação de estilo e erros</li>
+                            <li><strong>flake8:</strong> Combinação de ferramentas (pycodestyle, pyflakes, mccabe)</li>
+                            <li><strong>mypy:</strong> Verificação de tipos estáticos</li>
+                            <li><strong>bandit:</strong> Análise de segurança</li>
+                            <li><strong>radon:</strong> Análise de complexidade</li>
+                            <li><strong>SonarQube:</strong> Plataforma completa de análise</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="font-bold mb-2">C++</h5>
+                        <ul class="list-disc pl-6">
+                            <li><strong>clang-tidy:</strong> Verificação de estilo e erros</li>
+                            <li><strong>cppcheck:</strong> Análise de bugs e padrões de programação</li>
+                            <li><strong>PVS-Studio:</strong> Detecção de bugs e vulnerabilidades</li>
+                            <li><strong>Coverity:</strong> Análise de bugs e qualidade</li>
+                            <li><strong>CPD (Copy-Paste Detector):</strong> Detecção de código duplicado</li>
+                            <li><strong>SonarQube:</strong> Plataforma completa de análise</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Segurança no Desenvolvimento</h3>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg mb-6">
+                <h4 class="text-xl font-medium mb-2">OWASP Top 10</h4>
+                <p class="mb-4">Lista das dez vulnerabilidades de segurança mais críticas em aplicações web:</p>
+                
+                <ol class="list-decimal pl-6">
+                    <li><strong>Quebra de Controle de Acesso:</strong> Falhas que permitem acesso não autorizado a funcionalidades ou dados</li>
+                    <li><strong>Falhas Criptográficas:</strong> Dados sensíveis expostos devido a criptografia fraca ou ausente</li>
+                    <li><strong>Injeção:</strong> Dados não confiáveis interpretados como comandos (SQL, OS, LDAP)</li>
+                    <li><strong>Design Inseguro:</strong> Falhas no design e arquitetura da segurança</li>
+                    <li><strong>Configuração Incorreta de Segurança:</strong> Configurações padrão inseguras, incompletas ou ad-hoc</li>
+                    <li><strong>Componentes Vulneráveis e Desatualizados:</strong> Uso de bibliotecas e frameworks com vulnerabilidades conhecidas</li>
+                    <li><strong>Falhas de Identificação e Autenticação:</strong> Problemas na verificação de identidade</li>
+                    <li><strong>Falhas na Integridade de Software e Dados:</strong> Falta de proteção contra manipulação de dados e código</li>
+                    <li><strong>Falhas de Registro e Monitoramento:</strong> Logs insuficientes para detectar ataques</li>
+                    <li><strong>Falsificação de Solicitação do Lado do Servidor (SSRF):</strong> Servidor web é induzido a fazer solicitações inadequadas</li>
+                </ol>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Práticas de Codificação Segura em Python</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># ❌ Vulnerável a injeção SQL
+def buscar_usuario(username):
+    query = "SELECT * FROM usuarios WHERE nome = '" + username + "'"
+    cursor.execute(query)
+    return cursor.fetchone()
+
+# ✅ Protegido contra injeção SQL
+def buscar_usuario_seguro(username):
+    query = "SELECT * FROM usuarios WHERE nome = %s"
+    cursor.execute(query, (username,))
+    return cursor.fetchone()
+
+# ❌ Criptografia fraca
+def senha_segura(senha):
+    import hashlib
+    return hashlib.md5(senha.encode()).hexdigest()  # MD5 é inseguro!
+
+# ✅ Criptografia forte
+def senha_segura_bcrypt(senha):
+    import bcrypt
+    # O salt é gerado e incorporado automaticamente
+    return bcrypt.hashpw(senha.encode(), bcrypt.gensalt())</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Práticas de Codificação Segura em C++</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code>// ❌ Vulnerável a buffer overflow
+void funcaoInsegura(char* input) {
+    char buffer[10];
+    strcpy(buffer, input);  // Sem verificação de tamanho!
+}
+
+// ✅ Protegido contra buffer overflow
+void funcaoSegura(const char* input) {
+    char buffer[10];
+    strncpy(buffer, input, sizeof(buffer) - 1);
+    buffer[sizeof(buffer) - 1] = '\0';
+}
+
+// ✅ Ainda melhor: usar std::string
+void funcaoMaisSegura(const std::string& input) {
+    std::string buffer = input.substr(0, 9);
+}
+
+// ❌ Desalocação de memória insegura
+void memoriaInsegura() {
+    int* ptr = new int[10];
+    // Algum código que pode lançar exceção
+    delete[] ptr;  // Pode nunca ser executado!
+}
+
+// ✅ Gerenciamento de memória seguro (RAII)
+void memoriaSegura() {
+    std::vector<int> vec(10);  // Liberado automaticamente
+    // Ou com smart pointers
+    std::unique_ptr<int[]> ptr(new int[10]);
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="github-content">
+        <h2 class="text-3xl font-bold mb-6">Versionamento com GitHub</h2>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Conceitos Fundamentais do Git</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Sistema Distribuído de Controle de Versão</h4>
+                    <p>Git é um sistema de controle de versão distribuído que permite rastrear mudanças no código-fonte durante o desenvolvimento. Ao contrário de sistemas centralizados, cada desenvolvedor possui uma cópia completa do repositório, incluindo todo o histórico.</p>
+                    
+                    <h5 class="font-bold mt-4 mb-2">Características principais:</h5>
+                    <ul class="list-disc pl-6">
+                        <li>Operações locais rápidas</li>
+                        <li>Trabalho offline</li>
+                        <li>Histórico completo em cada clone</li>
+                        <li>Ramificação (branching) eficiente</li>
+                        <li>Integridade criptográfica dos dados</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Áreas do Git</h4>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border-collapse mb-4">
+                            <thead>
+                                <tr class="bg-gray-200 dark:bg-gray-700">
+                                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Área</th>
+                                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Working Directory</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Onde você edita os arquivos do projeto</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Staging Area (Index)</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Área intermediária onde as mudanças são preparadas para commit</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Repository (HEAD)</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Banco de dados de objetos que armazena o histórico de versões</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Remote Repository</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Repositório hospedado remotamente (ex: GitHub)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="bg-gray-200 dark:bg-gray-700 p-3 rounded">
+                        <p class="text-sm mb-0">
+                            Working Directory → <code>git add</code> → Staging Area → <code>git commit</code> → Local Repository → <code>git push</code> → Remote Repository
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-6">
+                <h4 class="text-xl font-medium mb-2">Objetos do Git</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <ul class="list-disc pl-6">
+                            <li><strong>Commit:</strong> Snapshot do projeto em um momento específico</li>
+                            <li><strong>Tree:</strong> Representa um diretório, contém outros trees e blobs</li>
+                            <li><strong>Blob:</strong> Conteúdo de um arquivo</li>
+                            <li><strong>Tag:</strong> Marca permanente em um commit específico</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="list-disc pl-6">
+                            <li><strong>Branch:</strong> Linha de desenvolvimento independente</li>
+                            <li><strong>HEAD:</strong> Ponteiro para o branch atual</li>
+                            <li><strong>Remote:</strong> Referência para repositórios em outros lugares</li>
+                            <li><strong>Stash:</strong> Armazenamento temporário de mudanças não commitadas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Comandos Essenciais do Git</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Configuração Inicial</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Configurar nome de usuário
+git config --global user.name "Seu Nome"
+
+# Configurar email
+git config --global user.email "seu.email@exemplo.com"
+
+# Configurar editor padrão
+git config --global core.editor "code --wait"
+
+# Ver configurações
+git config --list</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Criando e Clonando Repositórios</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Inicializar um novo repositório
+git init
+
+# Clonar um repositório existente
+git clone https://github.com/usuario/repositorio.git
+
+# Clonar um repositório com um nome específico
+git clone https://github.com/usuario/repositorio.git novo-nome
+
+# Clonar um branch específico
+git clone -b nome-do-branch https://github.com/usuario/repositorio.git</code></pre>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Básicos de Versionamento</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Verificar status do repositório
+git status
+
+# Adicionar arquivos ao staging
+git add arquivo.txt           # Arquivo específico
+git add diretorio/            # Diretório inteiro
+git add .                     # Todos os arquivos modificados
+git add -p                    # Adicionar interativamente
+
+# Fazer commit das mudanças
+git commit -m "Mensagem do commit"
+
+# Fazer commit pulando o staging (para arquivos rastreados)
+git commit -a -m "Mensagem do commit"
+
+# Mostrar histórico de commits
+git log
+git log --oneline            # Formato resumido
+git log --graph --oneline    # Com gráfico de branches</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Trabalhando com Remotes</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Listar remotes
+git remote -v
+
+# Adicionar remote
+git remote add origin https://github.com/usuario/repositorio.git
+
+# Enviar commits para remote
+git push origin main
+
+# Baixar mudanças do remote (sem mesclar)
+git fetch origin
+
+# Baixar mudanças e mesclar automaticamente
+git pull origin main
+
+# Baixar mudanças com rebase em vez de merge
+git pull --rebase origin main</code></pre>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Branches e Merges</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Listar branches
+git branch                  # Locais
+git branch -r               # Remotos
+git branch -a               # Todos
+
+# Criar e mudar para novo branch
+git checkout -b novo-branch
+
+# Mudar de branch
+git checkout outro-branch
+
+# Mesclar branch
+git merge branch-origem
+
+# Mesclar sem commit automático
+git merge --no-commit branch-origem
+
+# Rebase (reescrever histórico)
+git rebase main
+
+# Apagar branch
+git branch -d branch-nome   # Local
+git push origin --delete branch-nome  # Remoto</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Desfazer e Recuperar</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Descartar mudanças não staging
+git checkout -- arquivo.txt
+
+# Descartar todas as mudanças
+git reset --hard HEAD
+
+# Remover do staging
+git reset HEAD arquivo.txt
+
+# Modificar último commit
+git commit --amend -m "Nova mensagem"
+
+# Reverter um commit (criar novo commit revertendo)
+git revert commit-hash
+
+# Resetar para commit específico (cuidado!)
+git reset --soft commit-hash   # Mantém arquivos staging
+git reset --mixed commit-hash  # Remove do staging (padrão)
+git reset --hard commit-hash   # Descarta completamente</code></pre>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Stash</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Salvar mudanças temporariamente
+git stash
+
+# Salvar com mensagem
+git stash save "Descrição das mudanças"
+
+# Listar stashes
+git stash list
+
+# Aplicar stash mais recente (mantém na lista)
+git stash apply
+
+# Aplicar stash específico
+git stash apply stash@{2}
+
+# Aplicar e remover stash da lista
+git stash pop
+
+# Remover stash
+git stash drop stash@{1}
+
+# Limpar todos os stashes
+git stash clear</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Inspeção e Comparação</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Ver diferenças antes de adicionar ao staging
+git diff
+
+# Ver diferenças já no staging
+git diff --staged
+
+# Ver diferenças entre branches
+git diff branch1..branch2
+
+# Ver diferenças entre commits
+git diff commit1..commit2
+
+# Ver alterações de um commit
+git show commit-hash
+
+# Ver quem alterou cada linha de um arquivo
+git blame arquivo.txt
+
+# Buscar string no histórico
+git grep "texto" $(git rev-list --all)</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Fluxos de Trabalho com Git e GitHub</h3>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Git Flow</h4>
+                    <p class="mb-4">Modelo de ramificação para projetos com ciclos de release definidos.</p>
+                    
+                    <h5 class="font-bold mb-2">Branches principais:</h5>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li><strong>main:</strong> Código em produção</li>
+                        <li><strong>develop:</strong> Próximo release</li>
+                    </ul>
+                    
+                    <h5 class="font-bold mb-2">Branches de suporte:</h5>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li><strong>feature/*:</strong> Novas funcionalidades</li>
+                        <li><strong>release/*:</strong> Preparação para release</li>
+                        <li><strong>hotfix/*:</strong> Correções urgentes</li>
+                        <li><strong>bugfix/*:</strong> Correções não urgentes</li>
+                    </ul>
+                    
+                    <div class="bg-gray-200 dark:bg-gray-700 p-3 rounded">
+                        <p class="text-sm mb-0">Ideal para: Projetos com releases periódicas e equipes maiores</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">GitHub Flow</h4>
+                    <p class="mb-4">Fluxo simplificado baseado em branches e pull requests.</p>
+                    
+                    <h5 class="font-bold mb-2">Processo:</h5>
+                    <ol class="list-decimal pl-6 mb-4">
+                        <li>Criar branch a partir de main</li>
+                        <li>Fazer commits nesse branch</li>
+                        <li>Abrir Pull Request</li>
+                        <li>Revisão de código</li>
+                        <li>Deploy para teste (opcional)</li>
+                        <li>Merge para main</li>
+                    </ol>
+                    
+                    <h5 class="font-bold mb-2">Características:</h5>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Processo simples e direto</li>
+                        <li>Main sempre deployável</li>
+                        <li>Pull Requests como unidade de revisão</li>
+                        <li>Branches de curta duração</li>
+                    </ul>
+                    
+                    <div class="bg-gray-200 dark:bg-gray-700 p-3 rounded">
+                        <p class="text-sm mb-0">Ideal para: Entrega contínua e deploys frequentes</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Trunk-Based Development</h4>
+                    <p class="mb-4">Desenvolvimento centrado no branch principal (trunk).</p>
+                    
+                    <h5 class="font-bold mb-2">Características:</h5>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Todos os desenvolvedores trabalham no main/trunk</li>
+                        <li>Branches de curta duração (1-2 dias)</li>
+                        <li>Integração contínua frequente</li>
+                        <li>Feature flags para funcionalidades incompletas</li>
+                        <li>Release branches para versões específicas</li>
+                    </ul>
+                    
+                    <h5 class="font-bold mb-2">Vantagens:</h5>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Evita merges complexos</li>
+                        <li>Feedback mais rápido</li>
+                        <li>Reduz a distância entre branches</li>
+                        <li>Simplifica o processo de CI/CD</li>
+                    </ul>
+                    
+                    <div class="bg-gray-200 dark:bg-gray-700 p-3 rounded">
+                        <p class="text-sm mb-0">Ideal para: DevOps maduro e equipes experientes</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg mb-6">
+                <h4 class="text-xl font-medium mb-2">Boas Práticas para Commits</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h5 class="font-bold mb-2">Diretrizes para Mensagens de Commit</h5>
+                        <ul class="list-disc pl-6">
+                            <li>Use o imperativo: "Adiciona feature" em vez de "Adicionada feature"</li>
+                            <li>Primeira linha com no máximo 50 caracteres</li>
+                            <li>Adicione detalhes após uma linha em branco</li>
+                            <li>Explique "por quê" em vez de "o quê" (o código já mostra o quê)</li>
+                            <li>Referencie issues e pull requests quando relevante</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h5 class="font-bold mb-2">Commit Semântico</h5>
+                        <p class="mb-2">Formato: <code>&lt;tipo&gt;(&lt;escopo&gt;): &lt;descrição&gt;</code></p>
+                        <ul class="list-disc pl-6">
+                            <li><strong>feat:</strong> Nova funcionalidade</li>
+                            <li><strong>fix:</strong> Correção de bug</li>
+                            <li><strong>docs:</strong> Documentação</li>
+                            <li><strong>style:</strong> Formatação (não afeta código)</li>
+                            <li><strong>refactor:</strong> Refatoração</li>
+                            <li><strong>test:</strong> Testes</li>
+                            <li><strong>chore:</strong> Manutenção</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <h5 class="font-bold mb-2">Exemplos de Bons Commits</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>feat(auth): adiciona autenticação com Google OAuth
+
+Implementa o login com Google usando a biblioteca oauth2client.
+Resolve #123
+
+fix(api): corrige timeout em chamadas assíncronas
+
+O tempo limite de 5s era muito curto para ambientes de rede lentos.
+Aumentado para 15s com retry configurável.
+
+refactor(database): melhora desempenho das consultas
+
+- Adiciona índices em colunas frequentemente pesquisadas
+- Otimiza joins usando chaves estrangeiras
+- Reduz tempo de consulta em 40%</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Recursos do GitHub</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Pull Requests</h4>
+                    
+                    <h5 class="font-bold mb-2">O que são:</h5>
+                    <p class="mb-4">Mecanismo para notificar membros do time sobre mudanças que você propôs a um branch. Uma vez aberto, você pode discutir e revisar as mudanças com colaboradores antes de mesclar ao branch principal.</p>
+                    
+                    <h5 class="font-bold mb-2">Ciclo de vida:</h5>
+                    <ol class="list-decimal pl-6 mb-4">
+                        <li>Criar um branch para suas mudanças</li>
+                        <li>Fazer commits no branch</li>
+                        <li>Enviar o branch para o GitHub</li>
+                        <li>Abrir Pull Request</li>
+                        <li>Discussão e revisão de código</li>
+                        <li>Fazer ajustes baseados no feedback</li>
+                        <li>Aprovar e merge</li>
+                    </ol>
+                    
+                    <h5 class="font-bold mb-2">Boas práticas:</h5>
+                    <ul class="list-disc pl-6">
+                        <li>Título descritivo e conciso</li>
+                        <li>Adicionar descrição detalhada</li>
+                        <li>Usar templates de PR (se disponíveis)</li>
+                        <li>Manter PRs pequenos e focados</li>
+                        <li>Referenciar issues relacionadas</li>
+                        <li>Adicionar revisores apropriados</li>
+                        <li>Escrever testes para as mudanças</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Issues</h4>
+                    
+                    <h5 class="font-bold mb-2">O que são:</h5>
+                    <p class="mb-4">Issues são usadas para rastrear ideias, melhorias, tarefas ou bugs. Funcionam como um sistema de rastreamento integrado ao GitHub.</p>
+                    
+                    <h5 class="font-bold mb-2">Componentes principais:</h5>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li><strong>Título e descrição:</strong> O problema a ser resolvido</li>
+                        <li><strong>Labels:</strong> Categorização (bug, enhancement, etc.)</li>
+                        <li><strong>Assignees:</strong> Responsáveis pela issue</li>
+                        <li><strong>Milestones:</strong> Agrupamento por objetivo ou prazo</li>
+                        <li><strong>Projects:</strong> Quadros Kanban para organização</li>
+                        <li><strong>Comentários:</strong> Discussão sobre a issue</li>
+                    </ul>
+                    
+                    <h5 class="font-bold mb-2">Boas práticas:</h5>
+                    <ul class="list-disc pl-6">
+                        <li>Usar templates para diferentes tipos de issues</li>
+                        <li>Ser específico e fornecer passos de reprodução para bugs</li>
+                        <li>Incluir capturas de tela ou vídeos quando relevante</li>
+                        <li>Organizar com labels consistentes</li>
+                        <li>Vincular PRs relacionados</li>
+                        <li>Fechar issues obsoletas</li>
+                        <li>Manter a discussão focada no tópico</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Actions</h4>
+                    
+                    <h5 class="font-bold mb-2">O que são:</h5>
+                    <p class="mb-4">GitHub Actions é uma plataforma de CI/CD integrada que permite automatizar workflows baseados em eventos no GitHub.</p>
+                    
+                    <h5 class="font-bold mb-2">Principais componentes:</h5>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li><strong>Workflows:</strong> Processos automatizados configurados no repositório</li>
+                        <li><strong>Events:</strong> Atividades que acionam workflows (push, PR, etc.)</li>
+                        <li><strong>Jobs:</strong> Conjunto de steps executados em um runner</li>
+                        <li><strong>Steps:</strong> Tarefas individuais que executam comandos</li>
+                        <li><strong>Actions:</strong> Comandos reutilizáveis</li>
+                        <li><strong>Runners:</strong> Servidores que executam os workflows</li>
+                    </ul>
+                    
+                    <h5 class="font-bold mb-2">Exemplo de workflow:</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto text-xs"><code>name: Python CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
+        pip install -r requirements.txt
+    - name: Test with pytest
+      run: |
+        pytest</code></pre>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Outros Recursos</h4>
+                    
+                    <h5 class="font-bold mb-2">Pages:</h5>
+                    <p class="mb-4">GitHub Pages permite hospedar sites estáticos diretamente de seu repositório GitHub. Ideal para documentação, portfólios e landing pages.</p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>URL padrão: <code>https://username.github.io/repository</code></li>
+                        <li>Suporta Jekyll para sites dinâmicos simples</li>
+                        <li>Pode usar domínios personalizados</li>
+                    </ul>
+                    
+                    <h5 class="font-bold mb-2">Discussions:</h5>
+                    <p class="mb-4">Espaço colaborativo para sua comunidade discutir, fazer perguntas e compartilhar informações, separado das issues.</p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Categorias personalizáveis</li>
+                        <li>Formato Q&A com respostas marcáveis</li>
+                        <li>Suporte para fóruns de discussão geral</li>
+                    </ul>
+                    
+                    <h5 class="font-bold mb-2">Codespaces:</h5>
+                    <p class="mb-4">Ambientes de desenvolvimento na nuvem direto do GitHub, eliminando a necessidade de configuração local.</p>
+                    <ul class="list-disc pl-6">
+                        <li>Editor VS Code no navegador</li>
+                        <li>Ambiente totalmente configurado</li>
+                        <li>Integração com repositório</li>
+                        <li>Personalização via devcontainer.json</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Segurança e Colaboração</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Proteção de Branches</h4>
+                    
+                    <h5 class="font-bold mb-2">Regras comuns:</h5>
+                    <ul class="list-disc pl-6">
+                        <li><strong>Require pull request reviews:</strong> Exige revisão antes de merge</li>
+                        <li><strong>Require status checks:</strong> Testes devem passar antes do merge</li>
+                        <li><strong>Require signed commits:</strong> Exige commits assinados com GPG</li>
+                        <li><strong>Require linear history:</strong> Proíbe commits de merge</li>
+                        <li><strong>Include administrators:</strong> Aplica regras também a administradores</li>
+                        <li><strong>Restrict pushes:</strong> Limita quem pode enviar para o branch</li>
+                    </ul>
+                    
+                    <h5 class="font-bold mt-4 mb-2">Como configurar:</h5>
+                    <ol class="list-decimal pl-6">
+                        <li>Acesse seu repositório no GitHub</li>
+                        <li>Vá em Settings → Branches</li>
+                        <li>Clique em "Add rule" ou edite uma regra existente</li>
+                        <li>Configure as proteções necessárias</li>
+                        <li>Salve as configurações</li>
+                    </ol>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Assinatura de Commits</h4>
+                    
+                    <h5 class="font-bold mb-2">Por que assinar commits:</h5>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Verifica a autenticidade do autor</li>
+                        <li>Confirma que o código não foi alterado</li>
+                        <li>Aumenta a segurança do repositório</li>
+                        <li>Requisito em muitos projetos de código aberto</li>
+                    </ul>
+                    
+                    <h5 class="font-bold mb-2">Configurando assinatura GPG:</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code># Gerar chave GPG
+gpg --full-generate-key
+
+# Listar chaves
+gpg --list-secret-keys --keyid-format=long
+
+# Configurar Git para usar a chave
+git config --global user.signingkey ID_DA_CHAVE
+
+# Habilitar assinatura automática
+git config --global commit.gpgsign true
+
+# Exportar chave pública para GitHub
+gpg --armor --export ID_DA_CHAVE
+
+# Fazer commit assinado
+git commit -S -m "Commit assinado"</code></pre>
+                </div>
+            </div>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg mb-6">
+                <h4 class="text-xl font-medium mb-2">Code Owners e Revisão de Código</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h5 class="font-bold mb-2">CODEOWNERS</h5>
+                        <p class="mb-4">Arquivo que define automaticamente quem deve revisar mudanças em diferentes partes do código.</p>
+                        
+                        <h6 class="font-semibold mb-2">Exemplo de CODEOWNERS:</h6>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Proprietários padrão para tudo no repositório
+*                 @org/time-principal
+
+# Proprietários dos arquivos de docs
+/docs/            @org/time-docs
+
+# Proprietários do código do backend
+/src/backend/     @alice @bob
+
+# Proprietários de configuração do CI
+/.github/         @devops-team
+
+# Arquivos de configuração têm proprietário específico
+*.json            @config-manager</code></pre>
+                        
+                        <p class="text-sm mb-0">Salve como <code>.github/CODEOWNERS</code> no repositório.</p>
+                    </div>
+                    
+                    <div>
+                        <h5 class="font-bold mb-2">Boas Práticas para Revisão de Código</h5>
+                        <ul class="list-disc pl-6 mb-4">
+                            <li>Revise no máximo 400 linhas por vez</li>
+                            <li>Use listas de verificação para padronizar</li>
+                            <li>Foque em arquitetura e design primeiro</li>
+                            <li>Depois verifique detalhes de implementação</li>
+                            <li>Seja construtivo nos comentários</li>
+                            <li>Faça perguntas em vez de afirmações</li>
+                            <li>Teste o código localmente quando possível</li>
+                            <li>Verifique se testes foram atualizados</li>
+                            <li>Valide a documentação</li>
+                            <li>Automatize verificações de estilo e qualidade</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Resolução de Problemas Comuns</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Conflitos de Merge</h4>
+                    
+                    <h5 class="font-bold mb-2">O que são:</h5>
+                    <p class="mb-4">Ocorrem quando dois branches têm alterações diferentes na mesma parte do código e o Git não consegue mesclar automaticamente.</p>
+                    
+                    <h5 class="font-bold mb-2">Como resolver:</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># 1. Atualizar o branch atual com o branch alvo
+git pull origin main
+
+# 2. Resolver conflitos manualmente editando arquivos
+# O Git marca os conflitos assim:
+# <<<<<<< HEAD (seu branch atual)
+# Seu código
+# =======
+# Código do outro branch
+# >>>>>>> outra-branch
+
+# 3. Adicionar arquivos resolvidos
+git add .
+
+# 4. Continuar o merge
+git merge --continue
+# Ou
+git commit -m "Resolve conflitos de merge"</code></pre>
+                    
+                    <h5 class="font-bold mb-2">Ferramentas úteis:</h5>
+                    <ul class="list-disc pl-6">
+                        <li>IDEs modernos (VS Code, IntelliJ) têm resolução visual</li>
+                        <li><code>git mergetool</code> para usar ferramentas como kdiff3</li>
+                        <li>GitHub possui interface web para resolver conflitos simples</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Desfazendo Erros</h4>
+                    
+                    <h5 class="font-bold mb-2">Alterações não commitadas:</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-2"><code># Descartar mudanças em um arquivo
+git checkout -- arquivo.txt
+
+# Descartar todas as mudanças
+git restore .
+# ou (mais antigo)
+git reset --hard</code></pre>
+                    
+                    <h5 class="font-bold mb-2">Desfazer commit mais recente (não enviado):</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-2"><code># Manter as mudanças no working dir
+git reset --soft HEAD^
+
+# Descartar completamente as mudanças
+git reset --hard HEAD^</code></pre>
+                    
+                    <h5 class="font-bold mb-2">Reverter commits já enviados:</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-2"><code># Criar novo commit que desfaz as mudanças
+git revert commit-hash
+
+# Reverter vários commits (do mais recente ao mais antigo)
+git revert HEAD~3..HEAD</code></pre>
+                    
+                    <h5 class="font-bold mb-2">Corrigir o último commit:</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-2"><code># Mudar a mensagem
+git commit --amend -m "Nova mensagem"
+
+# Adicionar arquivos esquecidos
+git add arquivo-esquecido
+git commit --amend --no-edit</code></pre>
+                    
+                    <h5 class="font-bold mb-2">Recuperar branch excluído:</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code># Encontrar hash do último commit do branch
+git reflog
+
+# Recriar o branch a partir do commit
+git checkout -b branch-recuperado commit-hash</code></pre>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <template id="bash-content">
+        <h2 class="text-3xl font-bold mb-6">Uso do Terminal Bash</h2>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Introdução ao Bash</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">O que é Bash?</h4>
+                    <p>Bash (Bourne Again SHell) é um interpretador de comandos e linguagem de script, sendo o shell padrão na maioria das distribuições Linux e no macOS (até Catalina).</p>
+                    
+                    <h5 class="font-bold mt-4 mb-2">Características principais:</h5>
+                    <ul class="list-disc pl-6">
+                        <li>Interface de linha de comando (CLI)</li>
+                        <li>Linguagem de scripting completa</li>
+                        <li>Redirecionamento de entrada/saída</li>
+                        <li>Execução de comandos e programas</li>
+                        <li>Automação de tarefas através de scripts</li>
+                        <li>Gerenciamento de processos</li>
+                        <li>Expansão de nomes de arquivos (globbing)</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+                    <h4 class="text-xl font-medium mb-2">Acessando o Terminal</h4>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border-collapse mb-4">
+                            <thead>
+                                <tr class="bg-gray-200 dark:bg-gray-700">
+                                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Sistema Operacional</th>
+                                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Como Acessar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Linux</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ctrl+Alt+T (em muitas distros)<br>Ou procure por "Terminal" no menu</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">macOS</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Applications > Utilities > Terminal<br>Ou Cmd+Space e digite "Terminal"</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Windows</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Windows Subsystem for Linux (WSL)<br>Git Bash<br>Cygwin<br>PowerShell (semelhante, mas não é Bash)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="bg-gray-200 dark:bg-gray-700 p-3 rounded mt-4">
+                        <h5 class="font-bold mb-2">Prompt do Bash</h5>
+                        <p class="mb-0 text-sm">O prompt padrão tem a seguinte forma:</p>
+                        <code>username@hostname:current_directory$</code>
+                        <p class="mt-2 text-sm">O <code>$</code> indica usuário regular, enquanto <code>#</code> indica usuário root.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Comandos Básicos</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Navegação no Sistema de Arquivos</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Mostrar diretório atual
+pwd
+
+# Listar conteúdo do diretório
+ls             # Listagem básica
+ls -l          # Formato longo (detalhes)
+ls -a          # Mostrar arquivos ocultos
+ls -la         # Combinar opções
+ls -lh         # Tamanhos em formato humano
+
+# Mudar de diretório
+cd /caminho/para/diretorio    # Caminho absoluto
+cd pasta                      # Caminho relativo
+cd ..                         # Voltar um nível
+cd ~                          # Ir para o diretório home
+cd -                          # Voltar ao diretório anterior
+
+# Criar diretório
+mkdir nova_pasta
+mkdir -p pasta1/pasta2/pasta3  # Criar estrutura aninhada</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Gerenciamento de Arquivos</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Criar arquivo vazio
+touch arquivo.txt
+
+# Copiar arquivos
+cp origem.txt destino.txt
+cp -r pasta1 pasta2    # Copiar diretório recursivamente
+
+# Mover/renomear arquivos
+mv arquivo.txt novo_nome.txt
+mv arquivo.txt /outro/diretorio/
+
+# Remover arquivos
+rm arquivo.txt
+rm -i arquivo.txt      # Interativo (pede confirmação)
+rm -f arquivo.txt      # Forçado (sem confirmação)
+
+# Remover diretórios
+rmdir diretorio_vazio
+rm -r diretorio        # Recursivo (com conteúdo)
+rm -rf diretorio       # Recursivo e forçado (cuidado!)
+
+# Criar link simbólico
+ln -s arquivo_original link_simbolico</code></pre>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Visualização de Arquivos</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Ver conteúdo completo
+cat arquivo.txt
+
+# Ver as primeiras linhas
+head arquivo.txt
+head -n 20 arquivo.txt    # Primeiras 20 linhas
+
+# Ver as últimas linhas
+tail arquivo.txt
+tail -n 20 arquivo.txt    # Últimas 20 linhas
+tail -f arquivo.log       # Seguir arquivo em tempo real
+
+# Visualizador paginado
+less arquivo.txt
+# Dentro do less:
+#   - q: sair
+#   - /texto: buscar "texto"
+#   - n: próxima ocorrência
+#   - N: ocorrência anterior
+#   - g: ir para o início
+#   - G: ir para o fim
+
+# Mostrar tipo de arquivo
+file arquivo.txt</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Busca e Filtragem</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Buscar arquivos por nome
+find . -name "*.txt"           # Buscar .txt no dir atual
+find /home -type d -name "dados" # Buscar diretórios
+find . -type f -size +10M      # Arquivos > 10MB
+find . -mtime -7               # Modificados nos últimos 7 dias
+
+# Buscar texto em arquivos
+grep "texto" arquivo.txt
+grep -i "texto" arquivo.txt    # Ignorar case
+grep -r "texto" diretorio      # Recursivo
+grep -v "texto" arquivo.txt    # Linhas que não contêm
+
+# Filtrar texto
+sort arquivo.txt               # Ordenar linhas
+uniq arquivo.txt               # Remover duplicatas adjacentes
+sort arquivo.txt | uniq        # Remover todas duplicatas
+wc arquivo.txt                 # Contar linhas, palavras, bytes
+wc -l arquivo.txt              # Apenas linhas</code></pre>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Manipulação de Texto</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Concatenar arquivos
+cat arquivo1.txt arquivo2.txt > combinado.txt
+
+# Dividir arquivos
+split -l 100 arquivo.txt prefixo_  # Dividir a cada 100 linhas
+
+# Cortar colunas
+cut -d"," -f1,3 arquivo.csv        # Colunas 1 e 3 de CSV
+
+# Substituir texto
+sed 's/antigo/novo/g' arquivo.txt  # Substituir todas ocorrências
+sed -i 's/antigo/novo/g' arquivo.txt  # Editar no lugar
+
+# Processar texto com awk
+awk '{print $1, $3}' arquivo.txt   # Imprimir colunas 1 e 3
+awk -F"," '{print $1}' arquivo.csv # Definir separador
+awk '{sum+=$1} END {print sum}' arquivo.txt # Somar 1ª coluna</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Compressão e Arquivamento</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Compressão gzip
+gzip arquivo.txt                # Comprime para arquivo.txt.gz
+gunzip arquivo.txt.gz           # Descomprime
+
+# Compressão bzip2
+bzip2 arquivo.txt               # Mais lento, melhor compressão
+bunzip2 arquivo.txt.bz2         # Descomprime
+
+# Criar arquivo tar
+tar -cvf arquivo.tar pasta/     # Criar (sem compressão)
+tar -xvf arquivo.tar            # Extrair
+
+# Criar tar comprimido (tarball)
+tar -czvf arquivo.tar.gz pasta/ # Com gzip
+tar -cjvf arquivo.tar.bz2 pasta/ # Com bzip2
+tar -xzvf arquivo.tar.gz        # Extrair gzip
+tar -xjvf arquivo.tar.bz2       # Extrair bzip2
+
+# Arquivos ZIP
+zip -r arquivo.zip pasta/       # Criar
+unzip arquivo.zip               # Extrair</code></pre>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Permissões e Propriedade</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Ver permissões
+ls -l arquivo.txt
+
+# Formato de permissões: [tipo][user][group][others]
+# r (leitura) = 4, w (escrita) = 2, x (execução) = 1
+
+# Mudar permissões (modo octal)
+chmod 755 arquivo.sh            # rwxr-xr-x
+chmod 644 arquivo.txt           # rw-r--r--
+chmod 700 script.sh             # rwx------
+
+# Mudar permissões (modo simbólico)
+chmod u+x arquivo.sh            # Adicionar execução para usuário
+chmod go-w arquivo.txt          # Remover escrita para grupo/outros
+chmod a+r arquivo.txt           # Adicionar leitura para todos
+
+# Mudar proprietário
+chown usuario:grupo arquivo.txt
+chown -R usuario:grupo pasta/   # Recursivo</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Gerenciamento de Processos</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Listar processos
+ps                          # Processos do usuário
+ps aux                      # Todos os processos
+top                         # Visualização interativa
+htop                        # Alternativa melhorada (instalar se necessário)
+
+# Controle de processos
+comando &                   # Executar em background
+Ctrl+Z                      # Suspender processo atual
+bg                          # Continuar suspenso em background
+fg                          # Trazer para foreground
+jobs                        # Listar jobs em background
+
+# Sinais para processos
+kill PID                    # Encerrar processo (SIGTERM)
+kill -9 PID                 # Forçar encerramento (SIGKILL)
+killall nome_processo       # Encerrar por nome
+
+# Execução programada
+at 14:30                    # Agendar para 14:30
+# Digite comandos e pressione Ctrl+D para finalizar
+
+# Crontab (tarefas recorrentes)
+crontab -l                  # Listar tarefas
+crontab -e                  # Editar tarefas</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Redirecionamento e Pipes</h3>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg mb-6">
+                <h4 class="text-xl font-medium mb-4">Entendendo Streams e Redirecionamento</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                    <div>
+                        <h5 class="font-bold mb-2">Streams Padrão</h5>
+                        <ul class="list-disc pl-6">
+                            <li><strong>stdin (0):</strong> Entrada padrão</li>
+                            <li><strong>stdout (1):</strong> Saída padrão</li>
+                            <li><strong>stderr (2):</strong> Saída de erro</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h5 class="font-bold mb-2">Operadores de Redirecionamento</h5>
+                        <ul class="list-disc pl-6">
+                            <li><strong>&gt;</strong> - Redirecionar stdout (sobrescreve)</li>
+                            <li><strong>&gt;&gt;</strong> - Redirecionar stdout (anexa)</li>
+                            <li><strong>2&gt;</strong> - Redirecionar stderr</li>
+                            <li><strong>&amp;&gt;</strong> - Redirecionar stdout e stderr</li>
+                            <li><strong>&lt;</strong> - Redirecionar entrada</li>
+                            <li><strong>|</strong> - Pipe (conecta stdout ao stdin)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h5 class="font-bold mb-2">Exemplos de Redirecionamento</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code># Redirecionar stdout para arquivo (sobrescreve)
+ls -la > listagem.txt
+
+# Redirecionar stdout para arquivo (anexa)
+echo "Nova linha" >> arquivo.txt
+
+# Redirecionar stderr para arquivo
+comando_erro 2> erros.log
+
+# Redirecionar stdout e stderr para arquivos diferentes
+comando > output.txt 2> erros.log
+
+# Redirecionar stdout e stderr para o mesmo arquivo
+comando > output.txt 2>&1
+# ou mais simplesmente
+comando &> output.txt
+
+# Descartar saída (redirecionar para "lugar nenhum")
+comando > /dev/null
+
+# Ler do arquivo como entrada
+sort < lista.txt
+
+# Heredoc (documento embutido)
+cat << EOF > arquivo.txt
+Linha 1
+Linha 2
+Linha 3
+EOF</code></pre>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold mb-2">Pipes: Conectando Comandos</h5>
+                    <p class="mb-2">Pipes (|) permitem que a saída de um comando seja usada como entrada para outro.</p>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code># Contar arquivos em um diretório
+ls | wc -l
+
+# Encontrar as 5 maiores arquivos
+du -h /var/log/* | sort -rh | head -5
+
+# Contar ocorrências de uma palavra em vários arquivos
+grep "erro" *.log | wc -l
+
+# Filtrar e processar dados
+cat dados.csv | grep "2023" | cut -d"," -f2,3 | sort | uniq -c
+
+# Pipeline mais complexo
+find /var/log -type f -name "*.log" | xargs grep "ERROR" | cut -d":" -f1 | sort | uniq -c | sort -nr
+
+# tee: dividir output (mostrar na tela e salvar)
+comando | tee output.txt | grep "importante"</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Scripting em Bash</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Criando Scripts Básicos</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code>#!/bin/bash
+# Este é um script de exemplo
+
+# Comentários começam com #
+
+# Definindo variáveis
+NOME="Mundo"
+DATA=$(date +%Y-%m-%d)
+
+# Imprimindo texto
+echo "Olá, $NOME!"
+echo "Hoje é $DATA"
+
+# Recebendo entrada do usuário
+echo "Digite seu nome:"
+read USUARIO
+
+# Usando a entrada
+echo "Bem-vindo, $USUARIO!"
+
+# Fim do script
+exit 0</code></pre>
+                    
+                    <h5 class="font-bold mt-4 mb-2">Executando scripts:</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code># Tornar o script executável
+chmod +x meu_script.sh
+
+# Executar o script
+./meu_script.sh
+
+# Executar sem torná-lo executável
+bash meu_script.sh</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Variáveis e Parâmetros</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code>#!/bin/bash
+
+# Variáveis de ambiente
+echo "HOME: $HOME"
+echo "PATH: $PATH"
+echo "USER: $USER"
+
+# Definindo variáveis
+NOME="Maria"
+IDADE=30
+
+# Usando variáveis
+echo "$NOME tem $IDADE anos"
+
+# Parâmetros de linha de comando
+echo "Nome do script: $0"
+echo "Primeiro argumento: $1"
+echo "Segundo argumento: $2"
+echo "Todos os argumentos: $@"
+echo "Número de argumentos: $#"
+
+# Variáveis especiais
+echo "PID do script: $$"
+echo "Status do último comando: $?"
+
+# Substituição de comando
+ARQUIVOS=$(ls -la)
+HOJE=$(date +%d/%m/%Y)
+
+# Operações aritméticas
+SOMA=$((10 + 5))
+QUADRADO=$((IDADE * IDADE))</code></pre>
+                    
+                    <h5 class="font-bold mt-4 mb-2">Executando o script com argumentos:</h5>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code>./script.sh argumento1 argumento2</code></pre>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Estruturas de Controle</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code>#!/bin/bash
+
+# Condicional if-else
+if [ "$1" = "ajuda" ]; then
+    echo "Modo de ajuda ativado"
+elif [ "$1" = "versao" ]; then
+    echo "Versão 1.0"
+else
+    echo "Comando desconhecido"
+fi
+
+# Verificando números
+IDADE=18
+if [ $IDADE -ge 18 ]; then
+    echo "Maior de idade"
+else
+    echo "Menor de idade"
+fi
+
+# Operadores de comparação para números
+# -eq (igual), -ne (diferente), -lt (menor que)
+# -le (menor ou igual), -gt (maior que), -ge (maior ou igual)
+
+# Verificando arquivos
+if [ -f "/etc/passwd" ]; then
+    echo "O arquivo existe"
+fi
+
+# Condições de arquivo
+# -f (arquivo regular), -d (diretório), -e (existe)
+# -r (leitura), -w (escrita), -x (execução), -s (não vazio)
+
+# Operadores lógicos
+if [ $IDADE -ge 18 ] && [ $IDADE -le 65 ]; then
+    echo "Idade produtiva"
+fi
+
+# Forma alternativa para operadores lógicos
+if [[ $IDADE -ge 18 && $IDADE -le 65 ]]; then
+    echo "Idade produtiva"
+fi</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Loops</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code>#!/bin/bash
+
+# Loop for básico
+for i in 1 2 3 4 5; do
+    echo "Número: $i"
+done
+
+# For com expansão de sequência
+for i in {1..10}; do
+    echo "Contagem: $i"
+done
+
+# For com expansão de sequência e incremento
+for i in {1..20..2}; do  # Incremento de 2
+    echo "Ímpar: $i"
+done
+
+# For estilo C
+for ((i=0; i<5; i++)); do
+    echo "Índice: $i"
+done
+
+# Iterar sobre arquivos
+for arquivo in *.txt; do
+    echo "Processando $arquivo"
+done
+
+# Loop while
+contador=1
+while [ $contador -le 5 ]; do
+    echo "While: $contador"
+    contador=$((contador + 1))
+done
+
+# Loop until
+contador=5
+until [ $contador -le 0 ]; do
+    echo "Until: $contador"
+    contador=$((contador - 1))
+done
+
+# Loop infinito com break
+while true; do
+    echo "Loop infinito"
+    break  # Sai do loop
+done
+
+# Continue (pula para próxima iteração)
+for i in {1..10}; do
+    if [ $i -eq 5 ]; then
+        continue
+    fi
+    echo "Valor: $i"
+done</code></pre>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Funções</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code>#!/bin/bash
+
+# Definindo uma função simples
+saudacao() {
+    echo "Olá, mundo!"
+}
+
+# Chamando a função
+saudacao
+
+# Função com parâmetros
+cumprimentar() {
+    echo "Olá, $1!"
+}
+
+cumprimentar "Maria"  # Passa "Maria" como parâmetro
+
+# Função com múltiplos parâmetros
+soma() {
+    resultado=$(($1 + $2))
+    echo "A soma de $1 e $2 é $resultado"
+}
+
+soma 5 3
+
+# Função com variável local
+calcular_quadrado() {
+    local numero=$1  # Variável local
+    echo $((numero * numero))
+}
+
+resultado=$(calcular_quadrado 4)
+echo "O quadrado é $resultado"
+
+# Função com valor de retorno
+# (bash não tem return como outras linguagens)
+# Usamos o código de saída ou echo
+
+verifica_arquivo() {
+    if [ -f "$1" ]; then
+        echo "1"  # Existe
+        return 0  # Sucesso
+    else
+        echo "0"  # Não existe
+        return 1  # Falha
+    fi
+}
+
+# Capturando saída da função
+arquivo_existe=$(verifica_arquivo "/etc/passwd")
+echo "Existe? $arquivo_existe"
+
+# Verificando código de retorno
+verifica_arquivo "/nao/existe"
+echo "Status: $?"</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Arrays</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code>#!/bin/bash
+
+# Declarando um array
+frutas=("maçã" "banana" "laranja" "uva")
+
+# Acessando elementos
+echo "Primeira fruta: ${frutas[0]}"
+echo "Segunda fruta: ${frutas[1]}"
+
+# Todos os elementos
+echo "Todas as frutas: ${frutas[@]}"
+
+# Número de elementos
+echo "Total de frutas: ${#frutas[@]}"
+
+# Adicionando elemento
+frutas+=("morango")
+
+# Removendo elemento (deixa lacuna)
+unset frutas[1]
+
+# Iterando sobre o array
+for fruta in "${frutas[@]}"; do
+    echo "Fruta: $fruta"
+done
+
+# Iterando com índice
+for i in "${!frutas[@]}"; do
+    echo "Índice $i: ${frutas[i]}"
+done
+
+# Array associativo (tipo dicionário)
+declare -A capitais
+capitais[Brasil]="Brasília"
+capitais[França]="Paris"
+capitais[Japão]="Tóquio"
+
+# Acessando
+echo "Capital do Brasil: ${capitais[Brasil]}"
+
+# Todas as chaves
+echo "Países: ${!capitais[@]}"
+
+# Iterando sobre array associativo
+for pais in "${!capitais[@]}"; do
+    echo "$pais: ${capitais[$pais]}"
+done</code></pre>
+                </div>
+            </div>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg mb-6">
+                <h4 class="text-xl font-medium mb-2">Exemplo Prático: Script de Backup</h4>
+                <p class="mb-4">Este exemplo ilustra um script para backup de diretórios, combinando vários conceitos do Bash:</p>
+                
+                <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code>#!/bin/bash
+#
+# backup.sh - Script de backup de diretórios
+#
+# Uso: ./backup.sh diretorio [destino]
+#
+
+# Configurações padrão
+BACKUP_DIR="/tmp/backups"
+DATE=$(date +%Y%m%d_%H%M%S)
+LOG_FILE="/tmp/backup_$DATE.log"
+
+# Função para exibir uso
+mostrar_uso() {
+    echo "Uso: $0 diretorio [destino]"
+    echo "  diretorio  : Diretório a ser copiado"
+    echo "  destino    : Diretório destino (opcional, padrão: $BACKUP_DIR)"
+    exit 1
+}
+
+# Função para registrar log
+registrar_log() {
+    echo "[$(date +%Y-%m-%d\ %H:%M:%S)] $1" | tee -a "$LOG_FILE"
+}
+
+# Verificar argumentos
+if [ $# -lt 1 ]; then
+    mostrar_uso
+fi
+
+SRC_DIR="$1"
+if [ ! -d "$SRC_DIR" ]; then
+    registrar_log "ERRO: Diretório de origem não existe: $SRC_DIR"
+    exit 2
+fi
+
+# Verificar diretório destino
+if [ $# -ge 2 ]; then
+    BACKUP_DIR="$2"
+fi
+
+# Criar diretório de backup se não existir
+if [ ! -d "$BACKUP_DIR" ]; then
+    mkdir -p "$BACKUP_DIR"
+    if [ $? -ne 0 ]; then
+        registrar_log "ERRO: Não foi possível criar diretório de backup: $BACKUP_DIR"
+        exit 3
+    fi
+fi
+
+# Nome do arquivo de backup
+SRC_NAME=$(basename "$SRC_DIR")
+BACKUP_FILE="$BACKUP_DIR/${SRC_NAME}_$DATE.tar.gz"
+
+# Iniciar backup
+registrar_log "Iniciando backup de $SRC_DIR para $BACKUP_FILE"
+
+# Criar arquivo tar.gz
+tar -czf "$BACKUP_FILE" -C "$(dirname "$SRC_DIR")" "$SRC_NAME" 2>> "$LOG_FILE"
+
+# Verificar resultado
+if [ $? -eq 0 ]; then
+    TAMANHO=$(du -h "$BACKUP_FILE" | cut -f1)
+    registrar_log "Backup concluído com sucesso. Tamanho: $TAMANHO"
+    
+    # Listar arquivos de backup mais antigos que 30 dias
+    ANTIGOS=$(find "$BACKUP_DIR" -name "${SRC_NAME}_*.tar.gz" -mtime +30)
+    
+    # Remover backups antigos
+    if [ -n "$ANTIGOS" ]; then
+        echo "$ANTIGOS" | while read arquivo; do
+            registrar_log "Removendo backup antigo: $arquivo"
+            rm "$arquivo"
+        done
+    fi
+    
+    exit 0
+else
+    registrar_log "ERRO: Falha ao criar backup"
+    exit 4
+fi</code></pre>
+                
+                <h5 class="font-bold mb-2">Como usar:</h5>
+                <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-0"><code># Backup do diretório atual para o local padrão
+./backup.sh .
+
+# Backup com destino personalizado
+./backup.sh /home/usuario/documentos /mnt/backup_externo</code></pre>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Ferramentas e Utilitários Avançados</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Gerenciadores de Versão de Software</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Node Version Manager (NVM)
+# Instalação
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+# Uso
+nvm install 16        # Instalar Node.js v16
+nvm use 16            # Usar Node.js v16
+nvm alias default 16  # Definir como padrão
+
+# Python Version Manager (pyenv)
+# Instalação
+curl https://pyenv.run | bash
+
+# Uso
+pyenv install 3.10.0   # Instalar Python 3.10.0
+pyenv global 3.10.0    # Definir como global
+pyenv local 3.8.12     # Definir para o diretório atual
+
+# Ruby Version Manager (RVM)
+# Instalação
+\curl -sSL https://get.rvm.io | bash -s stable
+
+# Uso
+rvm install 3.0.0      # Instalar Ruby 3.0.0
+rvm use 3.0.0          # Usar Ruby 3.0.0
+rvm --default use 3.0.0 # Definir como padrão</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Gerenciamento de Ambientes Virtuais</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Python virtualenv
+# Instalação
+pip install virtualenv
+
+# Uso
+virtualenv venv              # Criar ambiente
+source venv/bin/activate     # Ativar (Linux/Mac)
+venv\Scripts\activate        # Ativar (Windows)
+deactivate                   # Desativar
+
+# Python venv (módulo integrado)
+python -m venv myenv         # Criar ambiente
+source myenv/bin/activate    # Ativar (Linux/Mac)
+myenv\Scripts\activate.bat   # Ativar (Windows)
+
+# Conda (Anaconda/Miniconda)
+conda create -n myenv python=3.8  # Criar ambiente
+conda activate myenv              # Ativar
+conda deactivate                  # Desativar
+conda env list                    # Listar ambientes
+
+# Node.js - nvm com .nvmrc
+echo "16" > .nvmrc           # Criar arquivo de versão
+nvm use                      # Usar versão do arquivo</code></pre>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Automatização de Tarefas</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Cron: agendador de tarefas do Linux/Unix
+# Formato: minuto hora dia mês diaSemana comando
+
+# Editar crontab
+crontab -e
+
+# Exemplos de entradas
+# Executar todo dia às 3:30 AM
+30 3 * * * /caminho/para/script.sh
+
+# Executar a cada 5 minutos
+*/5 * * * * /caminho/para/script.sh
+
+# Executar às segundas, quartas e sextas às 8h
+0 8 * * 1,3,5 /caminho/para/script.sh
+
+# Executar no primeiro dia de cada mês
+0 0 1 * * /caminho/para/script.sh
+
+# Backup a cada dia às 2h da manhã
+0 2 * * * tar -czf /backup/$(date +\%Y\%m\%d).tar.gz /dados
+
+# Cronômetro para parar um processo após tempo
+timeout 30s comando_demorado
+timeout 5m script_longo.sh</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">SSH e Acesso Remoto</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Conectar a servidor remoto
+ssh usuario@servidor
+
+# Conectar em porta não padrão
+ssh -p 2222 usuario@servidor
+
+# Executar comando remoto
+ssh usuario@servidor "ls -la"
+
+# Transferir arquivos com SCP
+scp arquivo.txt usuario@servidor:/diretorio/
+scp usuario@servidor:/arquivo.txt local/
+scp -r diretorio/ usuario@servidor:/destino/
+
+# Transferir com rsync (mais eficiente)
+rsync -avz diretorio/ usuario@servidor:/destino/
+rsync -avz --delete diretorio/ usuario@servidor:/destino/
+
+# Túnel SSH para porta local:remota
+ssh -L 8080:localhost:80 usuario@servidor
+
+# Túnel reverso (remota:local)
+ssh -R 8080:localhost:80 usuario@servidor
+
+# Configurar ~/.ssh/config para facilitar
+cat > ~/.ssh/config << EOF
+Host servidor
+    HostName endereço.exemplo.com
+    User usuario
+    Port 2222
+    IdentityFile ~/.ssh/id_rsa_servidor
+EOF
+
+# Depois, basta usar:
+ssh servidor</code></pre>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Ferramentas de Rede</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Informações sobre interfaces
+ifconfig                # Clássico (deprecado)
+ip addr show            # Alternativa moderna
+
+# Testando conectividade
+ping exemplo.com
+traceroute exemplo.com  # Rota dos pacotes
+mtr exemplo.com         # Ping + traceroute interativo
+
+# DNS e resolução de nomes
+nslookup exemplo.com
+dig exemplo.com
+host exemplo.com
+
+# Verificar portas abertas
+netstat -tuln           # Portas TCP/UDP abertas
+ss -tuln                # Alternativa moderna
+lsof -i :80             # Processo usando porta 80
+
+# Verificar conexões
+netstat -an | grep ESTABLISHED
+ss -o state established
+
+# Ferramenta wget para downloads
+wget https://exemplo.com/arquivo.zip
+wget -c https://exemplo.com/arquivo.zip  # Continuar download
+wget -r -np https://exemplo.com/docs/    # Recursivo
+
+# Ferramenta curl para requisições
+curl https://api.exemplo.com/dados
+curl -X POST -d "chave=valor" https://api.exemplo.com
+curl -H "Content-Type: application/json" \
+     -d '{"chave":"valor"}' \
+     https://api.exemplo.com</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Monitoramento e Diagnóstico</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Monitoramento de CPU e memória
+top
+htop    # Interface melhor (instalar se necessário)
+
+# Monitoramento de disco
+df -h   # Espaço em disco
+du -sh * # Tamanho de arquivos/diretórios
+ncdu    # Navegador de uso de disco (instalar)
+
+# Operações de I/O
+iostat  # Estatísticas de E/S
+iotop   # Top para I/O (instalar)
+
+# Estatísticas de desempenho
+vmstat
+mpstat  # Estatísticas de CPU
+free -h # Memória disponível
+
+# Informações de hardware
+lscpu   # Informações de CPU
+lsblk   # Dispositivos de bloco
+lspci   # Dispositivos PCI
+lsusb   # Dispositivos USB
+dmidecode # Informações detalhadas
+
+# Logs do sistema
+dmesg   # Mensagens do kernel
+journalctl # Logs do systemd
+tail -f /var/log/syslog # Monitorar logs em tempo real
+
+# Estatísticas em tempo real
+watch -n 1 "ps aux | sort -rk 3 | head -10" # Top 10 CPU
+watch -n 1 "free -m" # Atualizar uso de memória</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Dicas e Truques do Terminal</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Atalhos de Teclado</h4>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-4">
+                        <table class="min-w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-200 dark:bg-gray-700">
+                                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Atalho</th>
+                                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ctrl+C</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Interromper processo atual</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ctrl+Z</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Suspender processo atual</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ctrl+D</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Enviar EOF (sair do shell)</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ctrl+L</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Limpar tela (igual a clear)</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ctrl+A</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ir para o início da linha</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ctrl+E</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ir para o fim da linha</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ctrl+U</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Limpar do cursor até o início</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ctrl+K</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Limpar do cursor até o fim</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ctrl+W</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Apagar palavra anterior</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Ctrl+R</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Pesquisar histórico</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Tab</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Autocompletar</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Seta para cima/baixo</td>
+                                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">Navegar histórico de comandos</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Expansões e Substituições</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Expansão de tilde
+cd ~       # Diretório home do usuário atual
+cd ~usuario # Diretório home de outro usuário
+
+# Expansão de brace
+echo {1..5}      # 1 2 3 4 5
+echo {a..e}      # a b c d e
+mkdir -p projeto/{src,docs,tests}
+cp arquivo.txt{,.bak}  # Copia para arquivo.txt.bak
+
+# Substituição de comando
+echo "Hoje é $(date +%d/%m/%Y)"
+files=$(find . -name "*.txt")
+
+# Expansão de parâmetros
+echo ${var:-padrão}  # Usa 'padrão' se var não estiver definida
+echo ${var:=padrão}  # Define var como 'padrão' se não estiver definida
+echo ${#var}         # Comprimento da string
+echo ${var:0:5}      # Primeiros 5 caracteres
+echo ${var/old/new}  # Substitui 'old' por 'new'
+
+# Expansão de nomes de arquivo (globbing)
+ls *.txt              # Qualquer arquivo .txt
+ls [a-c]*.txt         # Arquivos .txt começando com a, b ou c
+ls file[0-9].txt      # file1.txt, file2.txt, etc
+ls file?.txt          # file1.txt, fileA.txt, etc (um caractere)
+ls **/logs            # logs em qualquer subdiretório</code></pre>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Aliases e Funções</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Aliases temporários
+alias ll='ls -la'
+alias cls='clear'
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# Adicionando ao .bashrc para persistência
+echo 'alias ll="ls -la"' >> ~/.bashrc
+echo 'alias gits="git status"' >> ~/.bashrc
+
+# Função de utilidade
+cd_make() {
+    mkdir -p "$1" && cd "$1"
+}
+
+# Adicionando ao .bashrc
+echo 'cd_make() { mkdir -p "$1" && cd "$1"; }' >> ~/.bashrc
+
+# Função para extrair arquivos
+extract() {
+    if [ -f "$1" ]; then
+        case "$1" in
+            *.tar.bz2)   tar xjf "$1"     ;;
+            *.tar.gz)    tar xzf "$1"     ;;
+            *.bz2)       bunzip2 "$1"     ;;
+            *.rar)       unrar e "$1"     ;;
+            *.gz)        gunzip "$1"      ;;
+            *.tar)       tar xf "$1"      ;;
+            *.tbz2)      tar xjf "$1"     ;;
+            *.tgz)       tar xzf "$1"     ;;
+            *.zip)       unzip "$1"       ;;
+            *.Z)         uncompress "$1"  ;;
+            *.7z)        7z x "$1"        ;;
+            *)           echo "'$1' não pode ser extraído" ;;
+        esac
+    else
+        echo "'$1' não é um arquivo válido"
+    fi
+}
+
+# Carregando as mudanças
+source ~/.bashrc</code></pre>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Configuração do Terminal</h4>
+                    <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Arquivo de configuração principal
+nano ~/.bashrc  # Para bash
+nano ~/.zshrc   # Para zsh
+
+# Definindo o editor padrão
+export EDITOR=nano
+export VISUAL=nano
+
+# Configurando o histórico
+export HISTSIZE=10000       # Tamanho do histórico na memória
+export HISTFILESIZE=10000   # Tamanho do arquivo de histórico
+export HISTCONTROL=ignoreboth # Ignorar duplicatas e comandos com espaço
+
+# Configurando o prompt (PS1)
+# \u: nome do usuário, \h: hostname, \w: diretório atual
+# \t: hora, \d: data, \n: nova linha, \$: $ ou # (root)
+export PS1="\u@\h:\w\\$ "
+
+# Prompt colorido
+export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\\$ "
+
+# Adicionar caminho ao PATH
+export PATH="$HOME/bin:$PATH"
+
+# Aliases comuns
+alias update='sudo apt update && sudo apt upgrade'
+alias mkdir='mkdir -p'
+alias grep='grep --color=auto'
+
+# Criando uma pasta de scripts pessoais
+mkdir -p ~/bin
+echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
+
+# Ferramentas de melhoria do terminal
+# (instale primeiro)
+# - Oh My Zsh (para zsh)
+# - Bash-it (para bash)
+# - Starship (prompt cross-shell)
+# - fzf (pesquisa fuzzy)
+
+# Instalando Starship
+# curl -sS https://starship.rs/install.sh | sh
+echo 'eval "$(starship init bash)"' >> ~/.bashrc</code></pre>
+                </div>
+            </div>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg mb-6">
+                <h4 class="text-xl font-medium mb-4">Comandos de Uma Linha (One-liners)</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h5 class="font-bold mb-2">Manipulação de Arquivos e Texto</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Encontrar arquivos modificados nas últimas 24h
+find . -type f -mtime -1
+
+# Contar linhas de código em arquivos .py
+find . -name "*.py" | xargs wc -l
+
+# Encontrar arquivos duplicados
+find . -type f -exec md5sum {} \; | sort | uniq -w32 -d
+
+# Substituir texto em vários arquivos
+find . -name "*.html" -exec sed -i 's/antigo/novo/g' {} \;
+
+# Ordenar arquivos por tamanho
+ls -lS /caminho | head -10
+
+# Buscar IPs em logs
+grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" arquivo.log | sort | uniq -c
+
+# Encontrar processos usando muita memória
+ps aux | sort -nk 4 | tail -10
+
+# Converter espaços em tabs
+sed 's/ \+/\t/g' arquivo.txt</code></pre>
+                    </div>
+                    
+                    <div>
+                        <h5 class="font-bold mb-2">Utilitários e Rede</h5>
+                        <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto mb-4"><code># Servidor HTTP simples no diretório atual
+python3 -m http.server 8000
+
+# Baixar site inteiro
+wget -mk -w 20 http://exemplo.com/
+
+# Ver usuários logados e o que estão fazendo
+w
+
+# Verificar conectividade com rede externa
+ping -c 4 8.8.8.8
+
+# Medir tempo de resposta de site
+curl -s -w "%{time_total}\n" -o /dev/null http://exemplo.com
+
+# Monitorar conexões HTTP
+sudo tcpdump -i eth0 port 80 -n
+
+# Ver portas abertas
+sudo lsof -i -P -n | grep LISTEN
+
+# Gerar senha segura
+openssl rand -base64 12</code></pre>
+                    </div>
+                </div>
+                
+                <h5 class="font-bold mb-2">Combinação de Comandos</h5>
+                <pre class="bg-gray-200 dark:bg-gray-700 p-3 rounded overflow-x-auto"><code># Executar vários comandos sequencialmente
+comando1 && comando2 && comando3   # Próximo só se anterior suceder
+comando1 ; comando2 ; comando3     # Executa todos independente de erros
+comando1 || comando2               # comando2 só executa se comando1 falhar
+
+# Executar em background e desconectar
+nohup comando > /dev/null 2>&1 &
+
+# Redirecionamento de stdout e stderr para arquivo
+comando > output.log 2>&1
+
+# Múltiplos comandos pipe
+cat arquivo.log | grep "erro" | sort | uniq -c | sort -nr
+
+# Executar comando para cada linha de um arquivo
+cat lista.txt | while read linha; do echo "Processando $linha"; comando "$linha"; done
+
+# Executar comando em cada arquivo
+find . -name "*.jpg" -exec convert {} {}.png \;
+
+# Combinar saídas de diferentes comandos
+paste <(ls -l) <(ls -l | md5sum)
+
+# Processar arquivo CSV
+cat dados.csv | cut -d, -f1,3 | sort | uniq > resultado.txt</code></pre>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        // Detecção de modo escuro
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const contentArea = document.getElementById('contentArea');
+            const topicButtons = document.querySelectorAll('.topic-btn');
+            const searchInput = document.getElementById('search');
+            
+            // Função para carregar conteúdo de um tópico
+            function loadTopicContent(topicId) {
+                const template = document.getElementById(`${topicId}-content`);
+                if (template) {
+                    contentArea.innerHTML = template.innerHTML;
+                    
+                    // Atualizar botões ativos
+                    topicButtons.forEach(btn => {
+                        if (btn.dataset.topic === topicId) {
+                            btn.classList.add('bg-primary', 'text-white');
+                        } else {
+                            btn.classList.remove('bg-primary', 'text-white');
+                        }
+                    });
+                    
+                    // Rolar para o topo do conteúdo em dispositivos móveis
+                    if (window.innerWidth < 768) {
+                        contentArea.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }
+            
+            // Busca no conteúdo
+            function searchContent(query) {
+                if (!query) {
+                    return;
+                }
+                
+                query = query.toLowerCase();
+                const templates = document.querySelectorAll('template');
+                let foundContent = false;
+                
+                contentArea.innerHTML = `<h2 class="text-3xl font-bold mb-6">Resultados da busca: "${query}"</h2>`;
+                const resultsDiv = document.createElement('div');
+                
+                templates.forEach(template => {
+                    const content = template.innerHTML;
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = content;
+                    
+                    const textContent = tempDiv.textContent.toLowerCase();
+                    if (textContent.includes(query)) {
+                        foundContent = true;
+                        
+                        // Extrair ID do tópico do ID do template (remover -content)
+                        const topicId = template.id.replace('-content', '');
+                        
+                        // Encontrar título do tópico
+                        const title = tempDiv.querySelector('h2').textContent;
+                        
+                        // Criar item de resultado
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'mb-6 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg';
+                        resultItem.innerHTML = `
+                            <h3 class="text-xl font-semibold mb-2">${title}</h3>
+                            <p class="mb-2">Contém referências ao termo buscado.</p>
+                            <button class="px-4 py-2 bg-primary text-white rounded hover:bg-opacity-80 transition" 
+                                    data-topic="${topicId}">
+                                Ver tópico
+                            </button>
+                        `;
+                        
+                        resultsDiv.appendChild(resultItem);
+                    }
+                });
+                
+                if (!foundContent) {
+                    resultsDiv.innerHTML = `<p>Nenhum resultado encontrado para "${query}".</p>`;
+                }
+                
+                contentArea.appendChild(resultsDiv);
+                
+                // Adicionar event listeners para os botões de resultado
+                document.querySelectorAll('#contentArea button[data-topic]').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        loadTopicContent(btn.dataset.topic);
+                    });
+                });
+            }
+            
+            // Event listeners para navegação
+            topicButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    loadTopicContent(button.dataset.topic);
+                });
+            });
+            
+            // Event listener para busca
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    searchContent(searchInput.value.trim());
+                }
+            });
+            
+            // Marcar primeiro botão como ativo se nenhum conteúdo for carregado inicialmente
+            if (contentArea.innerHTML.includes('Bem-vindo à Apostila Digital')) {
+                topicButtons[0].classList.add('bg-primary', 'text-white');
+            }
+        });
+    </script>
+</body>
+</html>
+</div>
+
+    <!-- Mobile menu button -->
+    <button id="mobileMenuBtn" class="md:hidden p-2 absolute top-4 right-4 text-white bg-primary rounded">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const sidebar = document.querySelector('aside');
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('fixed');
+            sidebar.classList.toggle('inset-0');
+            sidebar.classList.toggle('z-50');
+            sidebar.classList.toggle('bg-gray-100');
+            sidebar.classList.toggle('dark:bg-gray-800');
+            sidebar.classList.toggle('p-4');
+            sidebar.classList.toggle('overflow-y-auto');
+        });
+    </script>
+</html>
